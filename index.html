@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="TANGO: Test-Time Noise Guided Adaptation for Realistic Autoregressive Video Generation">
+  <meta name="description" content="TANGO avoids terminal points in autoregressive video generation through test-time noise guided optimization, using the diffusion model as a critic of its own outputs.">
+  <meta name="keywords" content="autoregressive video generation, video diffusion models, test-time adaptation, terminal points, noise guidance, TANGO, ECCV 2026, computer vision">
+  <meta name="author" content="Dimitrios Karageorgiou, Symeon Papadopoulos, Ioannis Kompatsiaris, Efstratios Gavves">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="MeVer, CERTH-ITI">
+  <meta property="og:title" content="TANGO: Test-Time Noise Guided Adaptation for Realistic Autoregressive Video Generation">
+  <meta property="og:description" content="TANGO avoids terminal points in autoregressive video generation through test-time noise guided optimization, using the diffusion model as a critic of its own outputs.">
+  <meta property="og:url" content="https://mever-team.github.io/tango/">
+  <!-- TODO: create a 1200x630px preview image at static/images/social_preview.png -->
+  <meta property="og:image" content="https://mever-team.github.io/tango/static/images/social_preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="TANGO - Research Preview">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="TANGO: Test-Time Noise Guided Adaptation for Realistic Autoregressive Video Generation">
+  <meta name="twitter:description" content="TANGO avoids terminal points in autoregressive video generation through test-time noise guided optimization, using the diffusion model as a critic of its own outputs.">
+  <meta name="twitter:image" content="https://mever-team.github.io/tango/static/images/social_preview.png">
+  <meta name="twitter:image:alt" content="TANGO - Research Preview">
+
+  <!-- Academic/Research Specific -->
+  <meta name="citation_title" content="Test-Time Noise Guided Adaptation for Realistic Autoregressive Video Generation">
+  <meta name="citation_author" content="Karageorgiou, Dimitrios">
+  <meta name="citation_author" content="Papadopoulos, Symeon">
+  <meta name="citation_author" content="Kompatsiaris, Ioannis">
+  <meta name="citation_author" content="Gavves, Efstratios">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_conference_title" content="European Conference on Computer Vision (ECCV)">
+  <!-- TODO: point to the arXiv/final PDF once available -->
+  <meta name="citation_pdf_url" content="https://mever-team.github.io/tango/">
+
+  <!-- Additional SEO -->
+  <meta name="theme-color" content="#2563eb">
+
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ajax.googleapis.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+  <title>TANGO: Test-Time Noise Guided Adaptation for Realistic Autoregressive Video Generation</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link rel="apple-touch-icon" href="static/images/favicon.ico">
+
+  <!-- Critical CSS -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <!-- Non-critical CSS -->
+  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  </noscript>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Deferred JavaScript -->
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="static/js/bulma-slider.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+
+  <!-- Structured Data for Academic Papers -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Test-Time Noise Guided Adaptation for Realistic Autoregressive Video Generation",
+    "description": "TANGO avoids terminal points in autoregressive video generation through test-time noise guided optimization, using the diffusion model as a critic of its own outputs.",
+    "author": [
+      { "@type": "Person", "name": "Dimitrios Karageorgiou" },
+      { "@type": "Person", "name": "Symeon Papadopoulos" },
+      { "@type": "Person", "name": "Ioannis Kompatsiaris" },
+      { "@type": "Person", "name": "Efstratios Gavves" }
+    ],
+    "datePublished": "2026",
+    "publisher": { "@type": "Organization", "name": "European Conference on Computer Vision (ECCV)" },
+    "url": "https://mever-team.github.io/tango/",
+    "isAccessibleForFree": true
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <main id="main-content">
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">
+              Test-Time Noise Guided Adaptation for<br>Realistic Autoregressive Video Generation
+            </h1>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://orcid.org/0009-0007-4259-8249" target="_blank">Dimitrios Karageorgiou</a><sup>1,2</sup>,</span>
+              <span class="author-block">
+                <a href="https://orcid.org/0000-0002-5441-7341" target="_blank">Symeon Papadopoulos</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://orcid.org/0000-0001-6447-9020" target="_blank">Ioannis Kompatsiaris</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://orcid.org/0000-0001-8947-1332" target="_blank">Efstratios Gavves</a><sup>2</sup></span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Information Technologies Institute, CERTH, Thessaloniki, Greece</span><br>
+              <span class="author-block"><sup>2</sup>University of Amsterdam, Amsterdam, The Netherlands</span>
+            </div>
+
+            <div class="is-size-5 publication-authors" style="margin-top: 0.75rem;">
+              <span class="author-block"><strong>ECCV 2026</strong></span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- TODO: update href with the arXiv PDF once available -->
+                <span class="link-block">
+                  <a href="#" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+
+                <!-- TODO: update href with the arXiv abstract page once available -->
+                <span class="link-block">
+                  <a href="#" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="ai ai-arxiv"></i></span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+
+                <!-- TODO: update href with the code repository once released -->
+                <span class="link-block">
+                  <a href="#" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fab fa-github"></i></span>
+                    <span>Code</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Paper abstract -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Autoregressive video diffusion models have enabled the generation of arbitrarily long videos by
+              removing conditioning on future frames, thus greatly improving computational efficiency. Yet, they
+              suffer from error accumulation over time, as the denoised sequence gradually drifts away from the
+              conditioning distribution seen during training. Recent advances attempt to reduce this error by
+              anchoring each generated frame to the learned manifold of real ones. However, even when all generated
+              individual frames lie close to the real manifold, there are trajectories which the model lacks
+              sufficient knowledge to continue without exiting it, thus reaching a <i>terminal point</i>. To prevent
+              the model from being trapped in terminal points, we start from the hypothesis that for well-modeled
+              future trajectories the distribution of the predicted noise should match the one of the forward noising
+              process. To enforce such a prior at test time, we introduce <i>Terminal Points Avoidance through Noise
+              Guided Optimization (TANGO)</i>, which uses the diffusion model as a critic of its own outputs, by
+              predicting one step forward and requiring an isotropic Gaussian noise prediction. We use the deviation
+              from this expected noise distribution to search for an alternative trajectory that does not lead to a
+              terminal point. Our approach achieves a 3.1% absolute improvement on VBench over state-of-the-art,
+              while reducing Fr&eacute;chet Video Distance by 28.3% on average across 15s videos.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End paper abstract -->
+
+  <!-- Placeholder: content coming soon -->
+  <section class="section">
+    <div class="container is-max-desktop has-text-centered content">
+      <p class="is-size-5 has-text-grey">
+        More content &mdash; qualitative results, method overview, and video comparisons &mdash; coming soon.
+      </p>
+    </div>
+  </section>
+
+  <!-- BibTeX citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <div class="bibtex-header">
+        <h2 class="title">BibTeX</h2>
+        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+          <i class="fas fa-copy"></i>
+          <span class="copy-text">Copy</span>
+        </button>
+      </div>
+      <!-- TODO: update with the final ECCV 2026 proceedings entry (editors, pages, publisher) once available -->
+      <pre id="bibtex-code"><code>@inproceedings{karageorgiou2026tango,
+  title     = {Test-Time Noise Guided Adaptation for Realistic Autoregressive Video Generation},
+  author    = {Karageorgiou, Dimitrios and Papadopoulos, Symeon and Kompatsiaris, Ioannis and Gavves, Efstratios},
+  booktitle = {European Conference on Computer Vision (ECCV)},
+  year      = {2026}
+}</code></pre>
+    </div>
+  </section>
+  <!-- End BibTeX citation -->
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+              You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
