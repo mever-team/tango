@@ -4,34 +4,44 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Primary Meta Tags -->
+  <!--
+    TANGO — ECCV 2026 project page.
+    Copy style guide (keep the tone honest when editing):
+      1. Every quantitative claim carries its raw values and comparator inline.
+      2. Banned vocabulary: revolutionary, groundbreaking, unprecedented, massive, crushes.
+         Allowed: outperforms, approaches, reduces, fails.
+      3. Every section opens with one plain-language sentence before any term of art.
+    Media note: every .clip filmstrip is a fixed-aspect container so each frame
+    stack can later be swapped for a <video> element with zero layout change.
+  -->
+
+  <title>TANGO: Test-Time Noise Guided Adaptation for Realistic Autoregressive Video Generation</title>
+
   <meta name="title" content="TANGO: Test-Time Noise Guided Adaptation for Realistic Autoregressive Video Generation">
-  <meta name="description" content="TANGO avoids terminal points in autoregressive video generation through test-time noise guided optimization, using the diffusion model as a critic of its own outputs.">
+  <meta name="description" content="TANGO avoids terminal points in autoregressive video generation through test-time noise guided optimization, using the diffusion model as a critic of its own outputs. ECCV 2026.">
   <meta name="keywords" content="autoregressive video generation, video diffusion models, test-time adaptation, terminal points, noise guidance, TANGO, ECCV 2026, computer vision">
   <meta name="author" content="Dimitrios Karageorgiou, Symeon Papadopoulos, Ioannis Kompatsiaris, Efstratios Gavves">
   <meta name="robots" content="index, follow">
-  <meta name="language" content="English">
+  <link rel="canonical" href="https://mever-team.github.io/tango/">
 
-  <!-- Open Graph / Facebook -->
+  <!-- Open Graph -->
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="MeVer, CERTH-ITI">
   <meta property="og:title" content="TANGO: Test-Time Noise Guided Adaptation for Realistic Autoregressive Video Generation">
-  <meta property="og:description" content="TANGO avoids terminal points in autoregressive video generation through test-time noise guided optimization, using the diffusion model as a critic of its own outputs.">
+  <meta property="og:description" content="Even when every generated frame looks realistic, an autoregressive video model can reach a state it cannot continue. TANGO detects these terminal points from the model's own noise predictions and steers around them at test time. ECCV 2026.">
   <meta property="og:url" content="https://mever-team.github.io/tango/">
-  <!-- TODO: create a 1200x630px preview image at static/images/social_preview.png -->
   <meta property="og:image" content="https://mever-team.github.io/tango/static/images/social_preview.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="TANGO - Research Preview">
+  <meta property="og:image:alt" content="TANGO — test-time noise guided adaptation for autoregressive video generation">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="TANGO: Test-Time Noise Guided Adaptation for Realistic Autoregressive Video Generation">
-  <meta name="twitter:description" content="TANGO avoids terminal points in autoregressive video generation through test-time noise guided optimization, using the diffusion model as a critic of its own outputs.">
+  <meta name="twitter:description" content="Even when every generated frame looks realistic, an autoregressive video model can reach a state it cannot continue. TANGO detects these terminal points and steers around them at test time. ECCV 2026.">
   <meta name="twitter:image" content="https://mever-team.github.io/tango/static/images/social_preview.png">
-  <meta name="twitter:image:alt" content="TANGO - Research Preview">
 
-  <!-- Academic/Research Specific -->
+  <!-- Academic -->
   <meta name="citation_title" content="Test-Time Noise Guided Adaptation for Realistic Autoregressive Video Generation">
   <meta name="citation_author" content="Karageorgiou, Dimitrios">
   <meta name="citation_author" content="Papadopoulos, Symeon">
@@ -39,51 +49,35 @@
   <meta name="citation_author" content="Gavves, Efstratios">
   <meta name="citation_publication_date" content="2026">
   <meta name="citation_conference_title" content="European Conference on Computer Vision (ECCV)">
-  <!-- TODO: point to the arXiv/final PDF once available -->
-  <meta name="citation_pdf_url" content="https://mever-team.github.io/tango/">
+  <meta name="citation_arxiv_id" content="2607.15849">
+  <meta name="citation_pdf_url" content="https://arxiv.org/pdf/2607.15849">
 
-  <!-- Additional SEO -->
-  <meta name="theme-color" content="#2563eb">
-
-  <!-- Preconnect for performance -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://ajax.googleapis.com">
-  <link rel="preconnect" href="https://cdn.jsdelivr.net">
-
-  <title>TANGO: Test-Time Noise Guided Adaptation for Realistic Autoregressive Video Generation</title>
-
-  <!-- Favicon -->
+  <meta name="theme-color" content="#0b0e12" id="meta-theme-color">
+  <link rel="icon" type="image/svg+xml" href="static/images/favicon.svg">
   <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
-  <link rel="apple-touch-icon" href="static/images/favicon.ico">
+  <link rel="apple-touch-icon" href="static/images/apple-touch-icon.png">
 
-  <!-- Critical CSS -->
-  <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/index.css">
+  <!-- Theme boot: default dark; apply stored preference before first paint -->
+  <script>
+    (function () {
+      document.documentElement.classList.add('js');
+      try {
+        var q = new URLSearchParams(location.search).get('theme');
+        var t = localStorage.getItem('tango-theme') || q;
+        if (t === 'light') {
+          document.documentElement.setAttribute('data-theme', 'light');
+          var mt = document.getElementById('meta-theme-color');
+          if (mt) mt.setAttribute('content', '#fafaf8');
+        }
+      } catch (e) {}
+    })();
+  </script>
 
-  <!-- Non-critical CSS -->
-  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript>
-    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
-    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
-    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  </noscript>
+  <link rel="preload" href="static/fonts/SourceSerif4-600.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="static/fonts/Inter.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="static/css/style.css">
+  <script defer src="static/js/main.js"></script>
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Deferred JavaScript -->
-  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="static/js/fontawesome.all.min.js"></script>
-  <script defer src="static/js/bulma-carousel.min.js"></script>
-  <script defer src="static/js/bulma-slider.min.js"></script>
-  <script defer src="static/js/index.js"></script>
-
-  <!-- Structured Data for Academic Papers -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -99,158 +93,1437 @@
     "datePublished": "2026",
     "publisher": { "@type": "Organization", "name": "European Conference on Computer Vision (ECCV)" },
     "url": "https://mever-team.github.io/tango/",
+    "sameAs": "https://arxiv.org/abs/2607.15849",
     "isAccessibleForFree": true
   }
   </script>
 </head>
 <body>
 
-  <!-- Scroll to Top Button -->
-  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
-    <i class="fas fa-chevron-up"></i>
-  </button>
+<a class="skip-link" href="#main-content">Skip to content</a>
 
-  <main id="main-content">
-  <section class="hero">
-    <div class="hero-body">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered">
-          <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">
-              Test-Time Noise Guided Adaptation for<br>Realistic Autoregressive Video Generation
-            </h1>
+<header class="topnav">
+  <div class="accent-bar" aria-hidden="true"></div>
+  <div class="shell topnav-inner">
+    <a class="wordmark" href="#top">
+      <svg class="nav-mark" viewBox="0 0 180 180" aria-hidden="true">
+        <path d="M 24,102 C 22,64 58,38 96,36 C 134,34 158,52 160,80 C 162,108 140,132 104,138 C 66,144 26,140 24,102 Z"
+              style="fill: var(--accent-mark); fill-opacity: 0.14"/>
+        <path d="M 50,98 C 68,82 92,72 114,74" fill="none" style="stroke: var(--accent-mark)" stroke-width="11" stroke-linecap="round"/>
+        <circle cx="50" cy="98" r="13" style="fill: var(--accent-mark)"/>
+        <circle cx="122" cy="75" r="10" style="fill: var(--accent-mark)"/>
+        <circle cx="122" cy="75" r="21" fill="none" style="stroke: var(--warn-mark)" stroke-width="8"/>
+        <path d="M 116,90 C 106,104 99,111 90,119" fill="none" style="stroke: var(--jump-mark)" stroke-width="11" stroke-dasharray="16 14" stroke-linecap="round"/>
+        <circle cx="85" cy="124" r="13" style="fill: var(--accent-mark)"/>
+      </svg>
+      <span>TANGO <span class="tag">· ECCV 2026</span></span>
+    </a>
+    <div class="nav-actions">
+      <a class="btn" href="https://arxiv.org/abs/2607.15849" target="_blank" rel="noopener">
+        <svg viewBox="0 0 448 512" fill="currentColor" aria-hidden="true"><use href="#arxiv-glyph"/></svg>
+        arXiv
+      </a>
+      <a class="btn" href="https://arxiv.org/pdf/2607.15849" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>
+        PDF
+      </a>
+      <a class="btn btn--soon" href="https://github.com/mever-team/tango" target="_blank" rel="noopener" title="Code repository — release coming soon">
+        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+        Code <span class="soon">soon</span>
+      </a>
+    </div>
+    <nav class="topnav-links" aria-label="Sections">
+      <a href="#problem">Problem</a>
+      <a href="#method">Method</a>
+      <a href="#drift">Results</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#failures">Failures</a>
+      <a href="#citation">BibTeX</a>
+    </nav>
+    <button class="theme-toggle" type="button" aria-label="Switch to light theme">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    </button>
+  </div>
+</header>
 
-            <div class="is-size-5 publication-authors">
-              <span class="author-block">
-                <a href="https://orcid.org/0009-0007-4259-8249" target="_blank">Dimitrios Karageorgiou</a><sup>1,2</sup>,</span>
-              <span class="author-block">
-                <a href="https://orcid.org/0000-0002-5441-7341" target="_blank">Symeon Papadopoulos</a><sup>1</sup>,</span>
-              <span class="author-block">
-                <a href="https://orcid.org/0000-0001-6447-9020" target="_blank">Ioannis Kompatsiaris</a><sup>1</sup>,</span>
-              <span class="author-block">
-                <a href="https://orcid.org/0000-0001-8947-1332" target="_blank">Efstratios Gavves</a><sup>2</sup></span>
-            </div>
+<main id="main-content">
 
-            <div class="is-size-5 publication-authors">
-              <span class="author-block"><sup>1</sup>Information Technologies Institute, CERTH, Thessaloniki, Greece</span><br>
-              <span class="author-block"><sup>2</sup>University of Amsterdam, Amsterdam, The Netherlands</span>
-            </div>
+  <!-- ================= HERO ================= -->
+  <section class="hero" id="top">
+    <div class="shell">
+      <svg class="hero-mark" viewBox="0 0 180 180" aria-hidden="true">
+        <path d="M 24,102 C 22,64 58,38 96,36 C 134,34 158,52 160,80 C 162,108 140,132 104,138 C 66,144 26,140 24,102 Z"
+              style="fill: var(--accent-mark); fill-opacity: 0.08; stroke: var(--accent-mark); stroke-opacity: 0.5" stroke-width="2.5"/>
+        <path d="M 52,96 C 70,82 92,72 116,74" fill="none" style="stroke: var(--accent-mark)" stroke-width="5" stroke-linecap="round"/>
+        <circle cx="52" cy="96" r="7" style="fill: var(--accent-mark)"/>
+        <circle cx="122" cy="75" r="6.5" style="fill: var(--warn-mark)"/>
+        <circle cx="122" cy="75" r="13" fill="none" style="stroke: var(--warn-mark)" stroke-width="3"/>
+        <path d="M 118,86 C 108,102 100,110 90,118" fill="none" style="stroke: var(--jump-mark)" stroke-width="5" stroke-dasharray="9 8" stroke-linecap="round"/>
+        <circle cx="86" cy="121" r="7" style="fill: var(--accent-mark)"/>
+      </svg>
+      <p class="hero-kicker"><span class="pill">ECCV 2026</span> Autoregressive video diffusion models</p>
+      <h1>Test-Time Noise Guided Adaptation for Realistic Autoregressive Video Generation</h1>
+      <p class="hero-sub"><span class="abbr">TANGO</span> — Terminal points Avoidance through Noise Guided Optimization</p>
 
-            <div class="is-size-5 publication-authors" style="margin-top: 0.75rem;">
-              <span class="author-block"><strong>ECCV 2026</strong></span>
-            </div>
+      <p class="authors">
+        <a href="https://orcid.org/0009-0007-4259-8249" target="_blank" rel="noopener">Dimitrios Karageorgiou</a><sup>1,2</sup> ·
+        <a href="https://orcid.org/0000-0002-5441-7341" target="_blank" rel="noopener">Symeon Papadopoulos</a><sup>1</sup> ·
+        <a href="https://orcid.org/0000-0001-6447-9020" target="_blank" rel="noopener">Ioannis Kompatsiaris</a><sup>1</sup> ·
+        <a href="https://orcid.org/0000-0001-8947-1332" target="_blank" rel="noopener">Efstratios Gavves</a><sup>2</sup>
+      </p>
+      <p class="affils"><sup>1</sup> Information Technologies Institute, CERTH, Greece &nbsp;·&nbsp; <sup>2</sup> University of Amsterdam, The Netherlands</p>
 
-            <div class="column has-text-centered">
-              <div class="publication-links">
-                <!-- TODO: update href with the arXiv PDF once available -->
-                <span class="link-block">
-                  <a href="#" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon"><i class="fas fa-file-pdf"></i></span>
-                    <span>Paper</span>
-                  </a>
-                </span>
+      <div class="hero-links">
+        <a class="btn" href="https://arxiv.org/abs/2607.15849" target="_blank" rel="noopener">
+          <!-- arXiv glyph from Academicons (SIL OFL 1.1) -->
+          <svg viewBox="0 0 448 512" fill="currentColor" aria-hidden="true"><path id="arxiv-glyph" d="m 119.65,351.996 c -5.84961,0.13477 -11.1943,-3.29883 -13.502,-8.67578 -2.19629,-5.27051 -0.61914,-8.9668 4.19727,-15.8652 7.05469,-10.3799 78.8242,-96.5625 78.8242,-96.5625 l -15.8828,-14.8633 c -13.3809,-13.3779 -13.9561,-31.333 -1.50977,-43.7754 l 18.4922,-17.6133 -51.5977,-63.377 c -4.00586,-4.26758 -6.48535,-11.7559 -4.24805,-17.1309 2.27832,-5.53613 7.69727,-9.12891 13.6836,-9.07031 3.83398,0.0957 7.43262,1.87402 9.83789,4.86133 l 61.3691,57.0566 94.5762,-90.0703 c 3.19434,-3.08398 7.44336,-4.83984 11.8828,-4.91016 1.60449,0.0039 3.19824,0.245117 4.73242,0.714844 5.7793,1.80566 10.249,6.41797 11.8711,12.252 1.2998,5.47363 -0.27637,11.2334 -4.18164,15.2832 l -83.0859,100.011996 14.8789,13.834 c 11.0957,10.0029 11.1543,27.3906 0.12695,37.4688 l -16.2949,15.6309 56.2559,66.4434 0.0742,0.0859 0.0664,0.0899 c 5.02734,6.53125 7.43164,11.5615 4.83984,17.9395 -3.13379,5.96875 -8.69727,10.29 -15.2559,11.8516 -0.67676,0.0908 -1.35938,0.13574 -2.04297,0.13671 l -0.004,-0.0117 c -4.42871,-0.27051 -8.61035,-2.13086 -11.7754,-5.24023 l -0.13086,-0.10743 -0.12304,-0.11132 -65.207,-59.127 -89.8965,86.2402 c 0,0 -5.33398,6.47754 -10.9707,6.61133 z m 178.104,-33.041 c 0.47852,-0.002 0.95703,-0.0332 1.43164,-0.0957 4.84277,-1.33301 8.95605,-4.54004 11.4316,-8.91016 1.44922,-3.5625 1.00293,-6.45703 -4.19727,-13.2148 l -56.0586,-66.2188 -26.375,25.3027 64.9551,58.9062 c 2.33887,2.41504 5.46484,3.91113 8.8125,4.2168 v 0.0137 z M 192.436,227.402 334.446,57.244 c 2.78711,-3.48926 4.5293,-6.97949 3.3418,-10.9121 -1.16113,-4.30273 -4.43457,-7.71777 -8.68555,-9.05664 -1.08105,-0.333984 -2.20508,-0.503906 -3.33594,-0.505859 -3.20801,0.07617 -6.26953,1.35645 -8.57617,3.58789 l -142.033,135.284999 c -11.1719,11.1719 -9.48242,26.0195 1.39258,36.8945 z"/></svg>
+          arXiv 2607.15849
+        </a>
+        <a class="btn" href="https://arxiv.org/pdf/2607.15849" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>
+          Paper PDF
+        </a>
+        <a class="btn btn--soon" href="https://github.com/mever-team/tango" target="_blank" rel="noopener" title="Code repository — release coming soon">
+          <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+          Code <span class="soon">soon</span>
+        </a>
+        <a class="btn" href="#citation">
+          <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h3a2 2 0 0 1-2 2h-1a1 1 0 0 0 0 2h1a4 4 0 0 0 4-4V5a2 2 0 0 0-2-2z"/><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h3a2 2 0 0 1-2 2H5a1 1 0 0 0 0 2h1a4 4 0 0 0 4-4V5a2 2 0 0 0-2-2z"/></svg>
+          BibTeX
+        </a>
+      </div>
 
-                <!-- TODO: update href with the arXiv abstract page once available -->
-                <span class="link-block">
-                  <a href="#" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon"><i class="ai ai-arxiv"></i></span>
-                    <span>arXiv</span>
-                  </a>
-                </span>
+      <p class="thesis">
+        Autoregressive video diffusion models degrade over time for a reason deeper than
+        frame-level drift: they reach <em class="tp">terminal points</em> — states inside the
+        learned manifold of real videos from which no continuation exists without exiting it. Even a video whose every
+        frame looks right can already be trapped.
+      </p>
+      <p class="thesis-sub">
+        The work introduces this issue, shows that it can be detected from the statistics of the
+        model's own noise predictions, and provides TANGO — a test-time adaptation approach for steering autoregressive video diffusion models away from terminal points.
+      </p>
 
-                <!-- TODO: update href with the code repository once released -->
-                <span class="link-block">
-                  <a href="#" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon"><i class="fab fa-github"></i></span>
-                    <span>Code</span>
-                  </a>
-                </span>
+      <!-- Hero teaser: baseline vs TANGO over a shared timeline.
+           Each .clip is a fixed-aspect stack; swap frames for <video> later. -->
+      <div class="teaser reveal" data-race data-autoplay="loop">
+        <div class="teaser-head">
+          <span class="teaser-title">15-second text-to-video: <em>“…a person is driving car…”</em></span>
+          <span class="teaser-note">Frames from generated videos — drag the slider or hover to move through time</span>
+        </div>
+        <div class="race-rows">
+          <div class="race-row">
+            <div class="race-label">
+              <span class="race-name">RewardForcing <span class="who">prior method</span></span>
+              <div class="race-chips">
+                <span class="chip chip--bad">Realistic ✗</span>
+                <span class="chip chip--bad">Dynamic ✗</span>
               </div>
             </div>
-
+            <figure class="clip" data-times='["1–4s","5–8s","9–12s","13–15s"]' data-start="3">
+              <div class="frames">
+                <div class="frames-track">
+                  <img src="static/images/compare/driving/rewardforcing_1.jpg" width="319" height="184" alt="RewardForcing, driving scene at 1–4 seconds" loading="lazy">
+                  <img src="static/images/compare/driving/rewardforcing_2.jpg" width="319" height="184" alt="RewardForcing, driving scene at 5–8 seconds" loading="lazy">
+                  <img src="static/images/compare/driving/rewardforcing_3.jpg" width="322" height="186" alt="RewardForcing, driving scene at 9–12 seconds" loading="lazy">
+                  <img src="static/images/compare/driving/rewardforcing_4.jpg" width="322" height="186" alt="RewardForcing, driving scene at 13–15 seconds: the scene has degraded" loading="lazy">
+                </div>
+              </div>
+            </figure>
+          </div>
+          <div class="race-row race-row--ours">
+            <div class="race-label">
+              <span class="race-name">TANGO <span class="who">ours</span></span>
+              <div class="race-chips">
+                <span class="chip chip--good">Realistic ✓</span>
+                <span class="chip chip--good">Dynamic ✓</span>
+              </div>
+            </div>
+            <figure class="clip" data-times='["1–4s","5–8s","9–12s","13–15s"]' data-start="3">
+              <div class="frames">
+                <div class="frames-track">
+                  <img src="static/images/compare/driving/tango_1.jpg" width="319" height="184" alt="TANGO, driving scene at 1–4 seconds" loading="lazy">
+                  <img src="static/images/compare/driving/tango_2.jpg" width="319" height="184" alt="TANGO, driving scene at 5–8 seconds" loading="lazy">
+                  <img src="static/images/compare/driving/tango_3.jpg" width="319" height="184" alt="TANGO, driving scene at 9–12 seconds" loading="lazy">
+                  <img src="static/images/compare/driving/tango_4.jpg" width="322" height="186" alt="TANGO, driving scene at 13–15 seconds: the scene remains coherent" loading="lazy">
+                </div>
+              </div>
+            </figure>
           </div>
         </div>
+        <div class="race-shared">
+          <input class="race-range" type="range" min="0" max="3" step="1" value="3" aria-label="Video time segment">
+          <div class="seg-axis" aria-hidden="true"><span>1–4s</span><span>5–8s</span><span>9–12s</span><span>13–15s</span></div>
+        </div>
       </div>
+
     </div>
   </section>
 
-  <!-- Paper abstract -->
-  <section class="section hero is-light">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          <h2 class="title is-3">Abstract</h2>
-          <div class="content has-text-justified">
-            <p>
-              Autoregressive video diffusion models have enabled the generation of arbitrarily long videos by
-              removing conditioning on future frames, thus greatly improving computational efficiency. Yet, they
-              suffer from error accumulation over time, as the denoised sequence gradually drifts away from the
-              conditioning distribution seen during training. Recent advances attempt to reduce this error by
-              anchoring each generated frame to the learned manifold of real ones. However, even when all generated
-              individual frames lie close to the real manifold, there are trajectories which the model lacks
-              sufficient knowledge to continue without exiting it, thus reaching a <i>terminal point</i>. To prevent
-              the model from being trapped in terminal points, we start from the hypothesis that for well-modeled
-              future trajectories the distribution of the predicted noise should match the one of the forward noising
-              process. To enforce such a prior at test time, we introduce <i>Terminal Points Avoidance through Noise
-              Guided Optimization (TANGO)</i>, which uses the diffusion model as a critic of its own outputs, by
-              predicting one step forward and requiring an isotropic Gaussian noise prediction. We use the deviation
-              from this expected noise distribution to search for an alternative trajectory that does not lead to a
-              terminal point. Our approach achieves a 3.1% absolute improvement on VBench over state-of-the-art,
-              while reducing Fr&eacute;chet Video Distance by 28.3% on average across 15s videos.
-            </p>
-          </div>
-        </div>
+  <!-- ================= PROBLEM ================= -->
+  <section id="problem">
+    <div class="shell">
+      <p class="kicker">Problem</p>
+      <h2>Realistic frames are not enough</h2>
+      <div class="prose reveal">
+        <p>
+          Autoregressive video diffusion models generate arbitrarily long videos by conditioning
+          only on their own past frames. Small mismatches between the sequences they generate and
+          the sequences they saw during training accumulate, until the process collapses.
+        </p>
+        <p>
+          Recent work fights this drift by anchoring each generated frame to the learned manifold of
+          real frames — through training-time unrolling, repeated denoising, or attention sinks.
+          These approaches share an assumption: if every individual frame stays on-manifold, the
+          video stays realistic.
+        </p>
+        <p>
+          This paper argues that the assumption breaks. Trained on a <strong>finite</strong> set of
+          finite-length videos, the model can produce a trajectory whose every frame is realistic,
+          yet which — as a sequence — has <strong>no valid continuation</strong> under what the model
+          knows. Forced to continue anyway, generation exits the learned manifold of real videos and the video turns unrealistic.
+        </p>
       </div>
+
+      <div class="callout reveal">
+        <p><span class="term">Terminal point</span> — a state inside the learned manifold of real videos
+        from which no continuation exists without exiting it. Every frame up to this point looks fine;
+        yet, the trajectory becomes out-of-distribution w.r.t. the learned model.</p>
+      </div>
+
+      <!-- Theme-aware redraw of the paper's overview diagram (Fig. 1, top) -->
+      <figure class="manifold-fig reveal">
+        <div class="manifold-scroll" role="img" aria-label="Diagram: a generation trajectory inside the learned manifold reaches a terminal point near the boundary. All reachable continuations lie outside the manifold. TANGO corrects the trajectory to an alternative state inside the manifold, from which generation continues realistically.">
+        <svg viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <marker id="ah-ok" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" style="fill: var(--accent-mark)"/>
+            </marker>
+            <marker id="ah-bad" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" style="fill: var(--warn-mark)"/>
+            </marker>
+            <marker id="ah-j" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" style="fill: var(--jump-mark)"/>
+            </marker>
+          </defs>
+
+          <path class="mani-blob fade-in" d="M 80,180 C 78,110 150,58 250,54 C 350,50 430,74 470,120 C 505,160 490,225 420,252 C 350,279 300,258 230,268 C 150,279 84,246 80,180 Z"/>
+          <text class="mani-label fade-in" x="118" y="243">learned manifold of real videos</text>
+
+          <!-- on-manifold trajectory so far -->
+          <path class="traj-ok draw" style="--len: 220" d="M190,140 C 240,118 300,100 349,108" marker-end="url(#ah-ok)"/>
+          <circle class="pt-ok fade-in" cx="190" cy="140" r="5"/>
+          <text class="mani-var fade-in" x="163" y="164">x<tspan baseline-shift="sub" font-size="10">i−1</tspan></text>
+
+          <!-- terminal point -->
+          <circle class="pt-ok fade-in" style="animation-delay: 0.9s" cx="360" cy="110" r="4.5"/>
+          <circle class="pt-ring fade-in" style="animation-delay: 0.9s" cx="360" cy="110" r="9"/>
+          <text class="mani-anno bad fade-in" style="animation-delay: 0.9s" x="330" y="88">terminal point</text>
+          <text class="mani-var fade-in" style="animation-delay: 0.9s" x="352" y="134">x<tspan baseline-shift="sub" font-size="10">i</tspan></text>
+
+          <!-- forced continuation: off-manifold -->
+          <path class="traj-bad draw" style="--len: 230; animation-delay: 1.2s" d="M371,105 C 440,78 490,82 543,91" marker-end="url(#ah-bad)"/>
+          <ellipse class="region-bad fade-in" style="animation-delay: 1.2s" cx="590" cy="92" rx="108" ry="54"/>
+          <circle class="pt-bad fade-in" style="animation-delay: 1.6s" cx="556" cy="94" r="4.5"/>
+          <text class="mani-var fade-in" style="animation-delay: 1.6s" x="568" y="99">x<tspan baseline-shift="sub" font-size="10">i+1</tspan></text>
+          <text class="mani-label fade-in" style="animation-delay: 1.6s" x="590" y="164" text-anchor="middle">every reachable continuation</text>
+          <text class="mani-label fade-in" style="animation-delay: 1.6s" x="590" y="179" text-anchor="middle">lies outside the manifold</text>
+
+          <!-- TANGO correction -->
+          <path class="traj-fix draw" style="--len: 140; animation-delay: 2.0s" d="M355,120 C 333,150 320,168 305,184" marker-end="url(#ah-j)"/>
+          <circle class="pt-ok fade-in" style="animation-delay: 2.5s" cx="300" cy="190" r="5"/>
+          <text class="mani-var fade-in" style="animation-delay: 2.5s" x="270" y="207">x<tspan baseline-shift="sub" font-size="10">i</tspan></text>
+          <text class="mani-anno jump fade-in" style="animation-delay: 2.5s" x="364" y="170">TANGO correction</text>
+
+          <!-- continuation inside the manifold -->
+          <path class="traj-ok draw" style="--len: 120; animation-delay: 2.7s" d="M305,195 C 335,216 355,226 380,231" marker-end="url(#ah-ok)"/>
+          <circle class="pt-ok fade-in" style="animation-delay: 3.1s" cx="390" cy="234" r="5"/>
+          <text class="mani-var fade-in" style="animation-delay: 3.1s" x="400" y="228">x<tspan baseline-shift="sub" font-size="10">i+1</tspan></text>
+          <text class="mani-label fade-in" style="animation-delay: 3.1s" x="404" y="252">generation continues on-manifold</text>
+        </svg>
+        </div>
+        <figcaption class="caption">
+          <strong>Terminal points act as traps.</strong> Even a trajectory whose frames all lie in the
+          learned manifold of reals can reach a state with no continuation inside it. TANGO searches the
+          neighborhood of the terminal point for an alternative state the model knows how to continue,
+          keeping generation on-manifold.
+        </figcaption>
+      </figure>
     </div>
   </section>
-  <!-- End paper abstract -->
 
-  <!-- Placeholder: content coming soon -->
-  <section class="section">
-    <div class="container is-max-desktop has-text-centered content">
-      <p class="is-size-5 has-text-grey">
-        More content &mdash; qualitative results, method overview, and video comparisons &mdash; coming soon.
+  <!-- ================= METHOD ================= -->
+  <section id="method">
+    <div class="shell">
+      <p class="kicker">Method</p>
+      <h2>The model can be its own critic</h2>
+      <div class="prose reveal">
+        <p>
+          TANGO asks the model one question about its own predicted future: <strong>does the noise it predicts
+          still look like the noise assumed during training?</strong> During training, the denoiser only ever removes isotropic
+          Gaussian noise. When it is conditioned on an out-of-distribution sequence the assumed noise statistics can be violated.
+        </p>
+      </div>
+
+      <div class="steps reveal">
+        <div class="step">
+          <div class="step-n">1 — Look ahead</div>
+          <h3>Predict one step forward</h3>
+          <p>Before committing to the next denoising, the frozen model predicts the noise
+          residual a timestep <em>after</em> it, conditioned on the candidate continuation.</p>
+        </div>
+        <div class="step">
+          <div class="step-n">2 — Test the noise</div>
+          <h3>Check it against Gaussian statistics</h3>
+          <p>For a well-modeled trajectory this look-ahead residual should be indistinguishable from
+          isotropic Gaussian noise — in its moments, its symmetry, and its spectrum. Deviations flag
+          a terminal point.</p>
+        </div>
+        <div class="step">
+          <div class="step-n">3 — Steer</div>
+          <h3>Optimize around the trap</h3>
+          <p>A small set of adaptive parameters (LoRA) is optimized at test
+          time to minimize the deviation, constrained to stay near the original prediction — finding
+          an alternative trajectory the model can continue.</p>
+        </div>
+      </div>
+
+      <figure class="manifold-fig arch-fig reveal">
+        <div class="manifold-scroll" role="img" aria-label="Diagram of the test-time adaptation loop: the adapted model, conditioned on past frames and the noisy current frame, proposes a candidate next frame. The frozen model, acting as a one-step-ahead critic, denoises a fresh noisy block conditioned on that candidate and returns the look-ahead noise residual, which feeds the noise-consistency objective. A frozen copy also produces the original prediction, and a regularization term keeps the candidate near it. Both terms combine into the total objective, which updates the adapted parameters at test time.">
+        <svg viewBox="0 0 980 560" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <marker id="ah-m" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" style="fill: var(--muted)"/>
+            </marker>
+            <marker id="ah-t2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" style="fill: var(--accent-mark)"/>
+            </marker>
+            <marker id="ah-a2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" style="fill: var(--warn-mark)"/>
+            </marker>
+            <clipPath id="cf-cand"><rect x="490" y="168" width="104" height="68" rx="6"/></clipPath>
+            <clipPath id="cf-ref"><rect x="490" y="348" width="104" height="68" rx="6"/></clipPath>
+            <pattern id="noise-dots" width="7" height="7" patternUnits="userSpaceOnUse">
+              <rect width="7" height="7" style="fill: var(--surface-2)"/>
+              <circle cx="1.5" cy="2" r="0.9" style="fill: var(--muted)" opacity="0.8"/>
+              <circle cx="5" cy="5.5" r="0.7" style="fill: var(--muted)" opacity="0.5"/>
+              <circle cx="4" cy="1" r="0.6" style="fill: var(--text-2)" opacity="0.45"/>
+              <circle cx="2.5" cy="5" r="0.55" style="fill: var(--text-2)" opacity="0.3"/>
+            </pattern>
+          </defs>
+
+          <!-- test-time update loop (drawn first, underneath) -->
+          <path class="arch-loop" d="M 940,428 C 958,426 962,410 962,392 L 962,42 C 962,28 950,22 936,22 L 360,22 C 344,22 335,30 335,44 L 335,142" marker-end="url(#ah-t2)"/>
+          <text class="mani-anno ok" x="648" y="15" text-anchor="middle">test-time update of φ</text>
+
+          <!-- inputs -->
+          <text class="mani-label" x="111" y="156" text-anchor="middle">past frames · rolling KV cache</text>
+          <rect class="arch-frame" x="36" y="170" width="150" height="76" rx="6"/>
+          <g style="fill: var(--muted)" opacity="0.55">
+            <rect x="44" y="176" width="5" height="5"/><rect x="62" y="176" width="5" height="5"/><rect x="80" y="176" width="5" height="5"/><rect x="98" y="176" width="5" height="5"/><rect x="116" y="176" width="5" height="5"/><rect x="134" y="176" width="5" height="5"/><rect x="152" y="176" width="5" height="5"/><rect x="170" y="176" width="5" height="5"/>
+            <rect x="44" y="235" width="5" height="5"/><rect x="62" y="235" width="5" height="5"/><rect x="80" y="235" width="5" height="5"/><rect x="98" y="235" width="5" height="5"/><rect x="116" y="235" width="5" height="5"/><rect x="134" y="235" width="5" height="5"/><rect x="152" y="235" width="5" height="5"/><rect x="170" y="235" width="5" height="5"/>
+          </g>
+          <image href="static/images/arch/past1.jpg" x="42" y="184" width="44" height="48" preserveAspectRatio="xMidYMid slice"/>
+          <image href="static/images/arch/past2.jpg" x="89" y="184" width="44" height="48" preserveAspectRatio="xMidYMid slice"/>
+          <image href="static/images/arch/past3.jpg" x="136" y="184" width="44" height="48" preserveAspectRatio="xMidYMid slice"/>
+          <text class="mani-var" x="111" y="268" text-anchor="middle">x<tspan baseline-shift="super" font-size="10">0</tspan><tspan baseline-shift="sub" font-size="10">&lt;i</tspan></text>
+
+          <rect class="arch-noise" x="78" y="314" width="64" height="64" rx="6" fill="url(#noise-dots)"/>
+          <text class="mani-var" x="110" y="400" text-anchor="middle">x<tspan baseline-shift="super" font-size="10">t</tspan><tspan baseline-shift="sub" font-size="10">i</tspan></text>
+          <text class="mani-label" x="110" y="418" text-anchor="middle">noisy current frame</text>
+
+          <!-- adapted model -->
+          <rect class="arch-box arch-box--adapted" x="250" y="150" width="170" height="104" rx="10"/>
+          <text class="arch-title" x="335" y="192" text-anchor="middle">ε<tspan baseline-shift="sub" font-size="15">φ</tspan></text>
+          <text class="arch-sub" x="335" y="214" text-anchor="middle">adapted model</text>
+          <g transform="translate(-13,0)"><path d="M301.5 226C302.6 228.2 304.5 229.6 304.5 232a3 3 0 0 1-6 0c0-1 .3-1.7.8-2.4.5 1 .9 1.5 1.6 1.7-.7-1.6-.4-3.6.6-5.3Z" style="fill: var(--accent-mark)"/></g>
+          <text class="arch-badge-t adapted" x="298" y="237">trainable · LoRA</text>
+
+          <!-- frozen reference model -->
+          <rect class="arch-box arch-box--frozen" x="250" y="330" width="170" height="104" rx="10"/>
+          <text class="arch-title" x="335" y="372" text-anchor="middle">ε<tspan baseline-shift="sub" font-size="15">θ</tspan></text>
+          <text class="arch-sub" x="335" y="394" text-anchor="middle">frozen model</text>
+          <g transform="translate(314,410)" style="stroke: var(--muted)" stroke-width="1.4" stroke-linecap="round">
+            <line x1="-5" y1="0" x2="5" y2="0"/>
+            <line x1="-2.5" y1="-4.3" x2="2.5" y2="4.3"/>
+            <line x1="-2.5" y1="4.3" x2="2.5" y2="-4.3"/>
+          </g>
+          <text class="arch-badge-t frozen" x="326" y="414">frozen</text>
+
+          <!-- candidate + reference outputs -->
+          <image href="static/images/arch/candidate.jpg" x="490" y="168" width="104" height="68" preserveAspectRatio="xMidYMid slice" clip-path="url(#cf-cand)"/>
+          <rect class="arch-frame arch-frame--adapted" x="490" y="168" width="104" height="68" rx="6" style="fill: none"/>
+          <text class="mani-var" x="525" y="256">x<tspan baseline-shift="super" font-size="10">0</tspan><tspan baseline-shift="sub" font-size="10">i</tspan>(φ)</text>
+          <path class="hat-mark" d="M 525.5,246 L 529,242.5 L 532.5,246"/>
+          <text class="mani-label" x="542" y="274" text-anchor="middle">candidate next frame</text>
+
+          <image href="static/images/arch/reference.jpg" x="490" y="348" width="104" height="68" preserveAspectRatio="xMidYMid slice" clip-path="url(#cf-ref)"/>
+          <rect class="arch-frame" x="490" y="348" width="104" height="68" rx="6" style="fill: none"/>
+          <text class="mani-var" x="525" y="436">x<tspan baseline-shift="super" font-size="10">0</tspan><tspan baseline-shift="sub" font-size="10">i</tspan>(θ)</text>
+          <path class="hat-mark" d="M 525.5,426 L 529,422.5 L 532.5,426"/>
+          <text class="mani-label" x="542" y="454" text-anchor="middle">original prediction</text>
+
+          <!-- one-step-ahead critic -->
+          <rect class="arch-noise" x="524" y="40" width="52" height="52" rx="6" fill="url(#noise-dots)"/>
+          <text class="mani-var" x="514" y="70" text-anchor="end">x<tspan baseline-shift="super" font-size="10">t</tspan><tspan baseline-shift="sub" font-size="10">i+1</tspan></text>
+
+          <rect class="arch-box arch-box--frozen" x="650" y="88" width="170" height="104" rx="10"/>
+          <text class="arch-title" x="735" y="130" text-anchor="middle">ε<tspan baseline-shift="sub" font-size="15">θ</tspan></text>
+          <text class="arch-sub" x="735" y="152" text-anchor="middle">one-step-ahead critic</text>
+          <g transform="translate(714,168)" style="stroke: var(--muted)" stroke-width="1.4" stroke-linecap="round">
+            <line x1="-5" y1="0" x2="5" y2="0"/>
+            <line x1="-2.5" y1="-4.3" x2="2.5" y2="4.3"/>
+            <line x1="-2.5" y1="4.3" x2="2.5" y2="-4.3"/>
+          </g>
+          <text class="arch-badge-t frozen" x="726" y="172">frozen</text>
+          <text class="mani-label" x="735" y="212" text-anchor="middle">sees the same past frames</text>
+
+          <!-- residual -->
+          <rect class="arch-noise arch-noise--warn" x="868" y="112" width="56" height="56" rx="6" fill="url(#noise-dots)"/>
+          <text class="mani-var" x="888" y="190" style="fill: var(--warn)">r<tspan baseline-shift="sub" font-size="10">i+1</tspan></text>
+          <path class="hat-mark" d="M 888,181 L 891,178 L 894,181" style="stroke: var(--warn)"/>
+          <text class="mani-label" x="896" y="208" text-anchor="middle">look-ahead residual</text>
+
+          <!-- losses -->
+          <rect class="arch-pill arch-pill--warn" x="796" y="252" width="120" height="40" rx="20"/>
+          <text class="arch-pill-t warn" x="856" y="278" text-anchor="middle">ℒ<tspan baseline-shift="sub" font-size="11">𝒩</tspan> — noise?</text>
+          <text class="mani-label" x="842" y="316" text-anchor="end">noise-consistency objective</text>
+
+          <rect class="arch-pill arch-pill--reg" x="628" y="420" width="120" height="40" rx="20"/>
+          <text class="arch-pill-t reg" x="688" y="446" text-anchor="middle">ℒ<tspan baseline-shift="sub" font-size="11">reg</tspan></text>
+          <text class="mani-label" x="688" y="482" text-anchor="middle">stay near the original prediction</text>
+
+          <rect class="arch-pill arch-pill--j" x="830" y="406" width="110" height="44" rx="22"/>
+          <text class="arch-pill-t j" x="885" y="434" text-anchor="middle">𝒥(φ)</text>
+          <text class="mani-label" x="885" y="484" text-anchor="middle">total objective</text>
+
+          <!-- data flow -->
+          <path class="arch-flow" d="M 186,194 C 212,192 224,190 242,185" marker-end="url(#ah-m)"/>
+          <path class="arch-flow" d="M 186,226 C 224,250 226,300 242,350" marker-end="url(#ah-m)"/>
+          <path class="arch-flow" d="M 142,340 C 190,320 208,266 242,226" marker-end="url(#ah-m)"/>
+          <path class="arch-flow" d="M 142,352 C 180,360 208,378 242,390" marker-end="url(#ah-m)"/>
+          <path class="arch-flow" d="M 420,202 L 484,202" marker-end="url(#ah-m)"/>
+          <path class="arch-flow" d="M 420,382 L 484,382" marker-end="url(#ah-m)"/>
+          <path class="arch-flow" d="M 594,192 C 620,180 628,170 642,159" marker-end="url(#ah-m)"/>
+          <path class="arch-flow" d="M 576,66 C 610,74 624,86 642,100" marker-end="url(#ah-m)"/>
+          <path class="arch-flow" d="M 820,140 L 862,140" marker-end="url(#ah-m)"/>
+          <path class="arch-flow arch-flow--warn" d="M 870,172 C 820,198 816,228 846,250" marker-end="url(#ah-a2)"/>
+          <path class="arch-flow" d="M 594,214 C 640,290 616,380 626,418" marker-end="url(#ah-m)"/>
+          <path class="arch-flow" d="M 594,382 C 612,390 616,398 623,412" marker-end="url(#ah-m)"/>
+          <path class="arch-flow arch-flow--warn" d="M 856,292 C 856,330 866,368 876,400" marker-end="url(#ah-a2)"/>
+          <path class="arch-flow" d="M 748,440 C 776,438 800,434 824,430" marker-end="url(#ah-m)"/>
+        </svg>
+        </div>
+        <div class="viz-legend" style="justify-content: center">
+          <span class="key"><span class="dotkey" style="background: var(--accent-mark)"></span>trainable</span>
+          <span class="key"><span class="dotkey" style="background: var(--muted)"></span> frozen</span>
+          <span class="key"><span class="dotkey" style="background: var(--warn-mark)"></span> noise-consistency signal</span>
+          <span class="key"><span class="swatch" style="border-top: 2px dashed var(--accent-mark); background: none; height: 0"></span> test-time update</span>
+        </div>
+        <figcaption class="caption">
+          <strong>Test-time adaptation loop.</strong> The adapted model
+          <span class="math">ε<sub>φ</sub></span> proposes a next frame
+          <span class="math"><span class="hat">x</span><sup>0</sup><sub>i</sub>(φ)</span>; the frozen critic
+          <span class="math">ε<sub>θ</sub></span> predicts one step beyond it and returns the look-ahead
+          residual <span class="math"><span class="hat">r</span><sub>i+1</sub></span>. Its deviation from isotropic Gaussian
+          statistics (<span class="math">ℒ<sub>𝒩</sub></span>), plus a regularization term keeping the
+          proposal near the original prediction (<span class="math">ℒ<sub>reg</sub></span>), drive the
+          optimization.
+        </figcaption>
+      </figure>
+
+      <details class="reveal">
+        <summary>What exactly is measured in the noise?</summary>
+        <div class="details-body">
+          <p>Four complementary statistics of the look-ahead residual, each penalizing a deviation
+          from what isotropic Gaussian noise would show:</p>
+          <div class="losses">
+            <div class="loss">
+              <h4><span class="math">ℒ<sub>a</sub></span> First &amp; second moments</h4>
+              <p>The empirical mean should be 0 and the variance 1. Penalizes global shifts and
+              scale drift in the residual.</p>
+            </div>
+            <div class="loss">
+              <h4><span class="math">ℒ<sub>b</sub></span> Higher-order moments</h4>
+              <p>Skewness and excess kurtosis of the z-scores should both be 0. Catches asymmetry
+              and heavy tails — structural artifacts hiding in the residual.</p>
+            </div>
+            <div class="loss">
+              <h4><span class="math">ℒ<sub>s</sub></span> Spectral flatness</h4>
+              <p>Isotropic noise has equal energy at all frequencies. A non-flat power spectrum means
+              the denoiser is removing actual visual content along with the noise.</p>
+            </div>
+            <div class="loss">
+              <h4><span class="math">ℒ<sub>l</sub></span> Low-frequency moments</h4>
+              <p>Real visual content concentrates in low frequencies, which the raw statistics —
+              dominated by high frequencies — can miss. The same moment tests, applied to a low-pass
+              filtered residual.</p>
+            </div>
+          </div>
+          <p>The total objective adds a constraint that keeps the corrected prediction in the
+          neighborhood of the original one — without it, the optimization converges to trivial
+          solutions and performs worse than no guidance at all:</p>
+          <p class="equation">
+            𝒥(φ) = E<sub>ε∼𝒩(0,I)</sub>&thinsp;[&thinsp;ℒ<sub>𝒩</sub>&thinsp;] +
+            λ<sub>reg</sub>&thinsp;‖&thinsp;<span class="hat">x</span><sup>0</sup><sub>i</sub>(φ) − <span class="hat">x</span><sup>0</sup><sub>i</sub>(θ)&thinsp;‖<sub>2</sub><sup>2</sup>
+          </p>
+        </div>
+      </details>
+
+      <details class="reveal">
+        <summary>Why does the predicted noise reveal terminal points?</summary>
+        <div class="details-body">
+          <p>
+            The denoiser is trained to remove isotropic Gaussian noise — but only when conditioned on
+            past sequences drawn from its training distribution. For any conditioning sequence outside
+            that distribution, the training loss never constrained the model's output, so the
+            prediction is free to violate the properties the forward noising process guarantees.
+          </p>
+          <p>
+            TANGO turns this blind spot into a detector. If the model, conditioned on a candidate
+            continuation, predicts a residual that is <em>not</em> plausible Gaussian noise, the
+            candidate has led outside what the model has learned — the definition of a terminal
+            point. The paper derives this in the score-matching formulation; the supplementary
+            material provides the flow-matching variant actually used in the implementation.
+          </p>
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+  <!-- ================= RESULTS: DRIFT ================= -->
+  <section id="drift">
+    <div class="shell">
+      <p class="kicker">Results</p>
+      <h2>Drift, measured</h2>
+      <div class="prose reveal">
+        <p>
+          If terminal points are real, their cost should grow with video length — and avoiding them
+          should keep the distribution of generated videos close to that of real ones over time.
+          Fréchet Video Distance per 3-second segment, against real reference clips from LV-Bench,
+          measures exactly that.
+        </p>
+      </div>
+
+      <div class="viz-card reveal">
+        <p class="viz-title">FVD by video segment — lower is better</p>
+        <p class="viz-sub">Video-to-video continuation on LV-Bench; average over consecutive 3-second segments of 15-second videos.</p>
+        <div class="viz-wrap">
+          <svg viewBox="0 0 720 400" xmlns="http://www.w3.org/2000/svg" role="img"
+               aria-label="Line chart: baseline FVD climbs from 367.9 to 715.6 across the five 3-second segments of a 15-second video, while TANGO stays between 365.1 and 441.4, ending at 438.8.">
+            <line class="gridline" x1="64" y1="344" x2="552" y2="344"/>
+            <line class="gridline" x1="64" y1="272.9" x2="552" y2="272.9"/>
+            <line class="gridline" x1="64" y1="201.8" x2="552" y2="201.8"/>
+            <line class="gridline" x1="64" y1="130.7" x2="552" y2="130.7"/>
+            <line class="gridline" x1="64" y1="59.6" x2="552" y2="59.6"/>
+            <text class="axis-text" x="56" y="348" text-anchor="end">300</text>
+            <text class="axis-text" x="56" y="276.9" text-anchor="end">400</text>
+            <text class="axis-text" x="56" y="205.8" text-anchor="end">500</text>
+            <text class="axis-text" x="56" y="134.7" text-anchor="end">600</text>
+            <text class="axis-text" x="56" y="63.6" text-anchor="end">700</text>
+            <text class="axis-text" x="64" y="372" text-anchor="middle">1–3s</text>
+            <text class="axis-text" x="186" y="372" text-anchor="middle">4–6s</text>
+            <text class="axis-text" x="308" y="372" text-anchor="middle">7–9s</text>
+            <text class="axis-text" x="430" y="372" text-anchor="middle">10–12s</text>
+            <text class="axis-text" x="552" y="372" text-anchor="middle">13–15s</text>
+            <text class="axis-label" x="64" y="18">FVD (lower is better)</text>
+
+            <path class="series-base" d="M64,295.7 L186,163 L308,130.2 L430,98.4 L552,48.5" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path class="series-tango" d="M64,297.7 L186,266.6 L308,263.9 L430,243.4 L552,245.3" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+            <circle class="dot-base" cx="64" cy="295.7" r="4.5"/>
+            <circle class="dot-base" cx="186" cy="163" r="4.5"/>
+            <circle class="dot-base" cx="308" cy="130.2" r="4.5"/>
+            <circle class="dot-base" cx="430" cy="98.4" r="4.5"/>
+            <circle class="dot-base" cx="552" cy="48.5" r="4.5"/>
+            <circle class="dot-tango" cx="64" cy="297.7" r="4.5"/>
+            <circle class="dot-tango" cx="186" cy="266.6" r="4.5"/>
+            <circle class="dot-tango" cx="308" cy="263.9" r="4.5"/>
+            <circle class="dot-tango" cx="430" cy="243.4" r="4.5"/>
+            <circle class="dot-tango" cx="552" cy="245.3" r="4.5"/>
+
+            <text class="end-label" x="566" y="50">715.6</text>
+            <text class="end-sub" x="566" y="65">baseline</text>
+            <text class="end-label" x="566" y="243">438.8</text>
+            <text class="end-sub" x="566" y="258">TANGO</text>
+
+            <line class="anno-line" x1="648" y1="52" x2="648" y2="242"/>
+            <line class="anno-line" x1="643" y1="52" x2="653" y2="52"/>
+            <line class="anno-line" x1="643" y1="242" x2="653" y2="242"/>
+            <text class="anno" x="658" y="143">−38.7%</text>
+            <text class="end-sub" x="658" y="158">at 13–15s</text>
+
+            <rect class="hit" x="3" y="20" width="122" height="332" data-tip='{"title":"Segment 1–3s","rows":[["TANGO","365.1"],["Baseline","367.9"]]}'/>
+            <rect class="hit" x="125" y="20" width="122" height="332" data-tip='{"title":"Segment 4–6s","rows":[["TANGO","408.8"],["Baseline","554.6"]]}'/>
+            <rect class="hit" x="247" y="20" width="122" height="332" data-tip='{"title":"Segment 7–9s","rows":[["TANGO","412.7"],["Baseline","600.7"]]}'/>
+            <rect class="hit" x="369" y="20" width="122" height="332" data-tip='{"title":"Segment 10–12s","rows":[["TANGO","441.4"],["Baseline","645.4"]]}'/>
+            <rect class="hit" x="491" y="20" width="122" height="332" data-tip='{"title":"Segment 13–15s","rows":[["TANGO","438.8"],["Baseline","715.6"]]}'/>
+          </svg>
+        </div>
+        <div class="viz-legend">
+          <span class="key"><span class="swatch" style="background: var(--accent-mark)"></span><span>TANGO (with noise guidance)</span></span>
+          <span class="key"><span class="swatch" style="background: var(--warn-mark)"></span><span>Baseline — Self-Forcing, no guidance (w/o <span class="math">ℒ<sub>𝒩</sub></span>)</span></span>
+        </div>
+      </div>
+      <p class="caption reveal">
+        Both start in the same place. By 15 seconds the baseline has drifted to nearly double its
+        initial distance from real video (367.9&thinsp;→&thinsp;715.6); TANGO stays close to flat
+        (365.1&thinsp;→&thinsp;438.8). Averaged over whole videos, FVD drops 28.3% (576.8&thinsp;→&thinsp;413.3).
       </p>
+
+      <details class="reveal">
+        <summary>Which loss terms matter? — full ablation</summary>
+        <div class="details-body">
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr><th>Ablation (FVD ↓)</th><th>1–3s</th><th>4–6s</th><th>7–9s</th><th>10–12s</th><th>13–15s</th><th>Total</th></tr>
+              </thead>
+              <tbody>
+                <tr class="ours"><td>TANGO (ours)</td><td>365.1</td><td class="best">408.8</td><td class="best">412.7</td><td class="best">441.4</td><td class="best">438.8</td><td class="best">413.3</td></tr>
+                <tr><td>w/o <span class="math">ℒ<sub>a</sub></span> (moments)</td><td class="best">364.6</td><td>418.1</td><td>467.1</td><td>469.8</td><td>488.2</td><td>441.6</td></tr>
+                <tr><td>w/o <span class="math">ℒ<sub>l</sub></span> (low-freq. moments)</td><td>380.3</td><td>452.8</td><td>518.4</td><td>534.8</td><td>545.2</td><td>486.3</td></tr>
+                <tr><td>w/o <span class="math">ℒ<sub>s</sub></span> (spectral flatness)</td><td>369.3</td><td>443.9</td><td>507.1</td><td>530.6</td><td>578.4</td><td>487.9</td></tr>
+                <tr><td>w/o <span class="math">ℒ<sub>b</sub></span> (higher-order moments)</td><td>363.7</td><td>449.8</td><td>561.2</td><td>587.1</td><td>572.3</td><td>506.8</td></tr>
+                <tr><td>w/o <span class="math">ℒ<sub>reg</sub></span> (regularization)</td><td>420.1</td><td>634.4</td><td>630.9</td><td>823.9</td><td>811.7</td><td>664.2</td></tr>
+                <tr><td>w/o <span class="math">ℒ<sub>𝒩</sub></span> (baseline)</td><td>367.9</td><td>554.6</td><td>600.7</td><td>645.4</td><td>715.6</td><td>576.8</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="table-note">
+            Higher-order moments contribute most; removing regularization is worse than no guidance
+            at all — the constraint is what prevents trivial solutions. Best values highlighted in bold.
+          </p>
+        </div>
+      </details>
+
+      <details class="reveal">
+        <summary>Hyperparameter sensitivity</summary>
+        <div class="details-body">
+          <div class="table-scroll">
+            <table class="table-groups">
+              <thead><tr><th>LoRA rank</th><th>FVD ↓</th><th>B (noise vectors)</th><th>FVD ↓</th><th><span class="math">λ<sub>reg</sub></span></th><th>FVD ↓</th></tr></thead>
+              <tbody>
+                <tr><td>2</td><td>596.2</td><td>1</td><td>473.7</td><td>0.1</td><td>656.5</td></tr>
+                <tr><td>4</td><td>496.3</td><td>5</td><td>461.8</td><td>0.5</td><td>449.3</td></tr>
+                <tr class="ours"><td>8</td><td class="best">413.3</td><td>10</td><td>413.3</td><td>0.9</td><td class="best">413.3</td></tr>
+                <tr><td>16</td><td>425.6</td><td>20</td><td class="best">399.4</td><td>10</td><td>475.6</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="table-note">
+            Gains from more trainable parameters eventually diminish; more noise vectors keep helping
+            but cost compute — B&thinsp;=&thinsp;10 is the reported trade-off. The weights of the individual
+            noise-consistency terms behave best when kept within the same order of magnitude. Best values highlighted in bold.
+          </p>
+        </div>
+      </details>
     </div>
   </section>
 
-  <!-- BibTeX citation -->
-  <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <div class="bibtex-header">
-        <h2 class="title">BibTeX</h2>
-        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
-          <i class="fas fa-copy"></i>
-          <span class="copy-text">Copy</span>
-        </button>
+  <!-- ================= RESULTS: COMPARISON ================= -->
+  <section id="comparison">
+    <div class="shell">
+      <p class="kicker">Results</p>
+      <h2>Side by side, over time</h2>
+      <div class="prose reveal">
+        <p>
+          The same drift is visible. Below, three 15-second text-to-video generations by the two
+          strongest prior methods and TANGO, aligned on a shared timeline — drag the slider and watch
+          what the evolution of the generated trajectory as time grows.
+        </p>
       </div>
-      <!-- TODO: update with the final ECCV 2026 proceedings entry (editors, pages, publisher) once available -->
-      <pre id="bibtex-code"><code>@inproceedings{karageorgiou2026tango,
+
+      <div class="reveal" data-race>
+        <div class="tabs" role="tablist" aria-label="Comparison scenes">
+          <button class="tab" role="tab" id="tab-driving" aria-controls="panel-driving" aria-selected="true" type="button">Driving</button>
+          <button class="tab" role="tab" id="tab-trainboat" aria-controls="panel-trainboat" aria-selected="false" type="button">Train &amp; boat</button>
+          <button class="tab" role="tab" id="tab-bird" aria-controls="panel-bird" aria-selected="false" type="button">Bird over forest</button>
+        </div>
+
+        <div class="race-panel" id="panel-driving" role="tabpanel" aria-labelledby="tab-driving">
+          <p class="race-prompt">“…a person is driving car…”</p>
+          <div class="race-rows">
+            <div class="race-row race-row--ours">
+              <div class="race-label">
+                <span class="race-name">TANGO <span class="who">ours</span></span>
+                <div class="race-chips"><span class="chip chip--good">Realistic ✓</span><span class="chip chip--good">Dynamic ✓</span></div>
+              </div>
+              <figure class="clip" data-times='["1–4s","5–8s","9–12s","13–15s"]' data-start="3">
+                <div class="frames"><div class="frames-track">
+                  <img src="static/images/compare/driving/tango_1.jpg" width="319" height="184" alt="TANGO, driving scene, 1–4 seconds" loading="lazy">
+                  <img src="static/images/compare/driving/tango_2.jpg" width="319" height="184" alt="TANGO, driving scene, 5–8 seconds" loading="lazy">
+                  <img src="static/images/compare/driving/tango_3.jpg" width="319" height="184" alt="TANGO, driving scene, 9–12 seconds" loading="lazy">
+                  <img src="static/images/compare/driving/tango_4.jpg" width="322" height="186" alt="TANGO, driving scene, 13–15 seconds" loading="lazy">
+                </div></div>
+              </figure>
+            </div>
+            <div class="race-row">
+              <div class="race-label">
+                <span class="race-name">LongLive</span>
+                <div class="race-chips"><span class="chip chip--bad">Realistic ✗</span><span class="chip chip--good">Dynamic ✓</span></div>
+              </div>
+              <figure class="clip" data-times='["1–4s","5–8s","9–12s","13–15s"]' data-start="3">
+                <div class="frames"><div class="frames-track">
+                  <img src="static/images/compare/driving/longlive_1.jpg" width="319" height="184" alt="LongLive, driving scene, 1–4 seconds" loading="lazy">
+                  <img src="static/images/compare/driving/longlive_2.jpg" width="319" height="184" alt="LongLive, driving scene, 5–8 seconds" loading="lazy">
+                  <img src="static/images/compare/driving/longlive_3.jpg" width="322" height="186" alt="LongLive, driving scene, 9–12 seconds" loading="lazy">
+                  <img src="static/images/compare/driving/longlive_4.jpg" width="322" height="186" alt="LongLive, driving scene, 13–15 seconds" loading="lazy">
+                </div></div>
+              </figure>
+            </div>
+            <div class="race-row">
+              <div class="race-label">
+                <span class="race-name">RewardForcing</span>
+                <div class="race-chips"><span class="chip chip--bad">Realistic ✗</span><span class="chip chip--bad">Dynamic ✗</span></div>
+              </div>
+              <figure class="clip" data-times='["1–4s","5–8s","9–12s","13–15s"]' data-start="3">
+                <div class="frames"><div class="frames-track">
+                  <img src="static/images/compare/driving/rewardforcing_1.jpg" width="319" height="184" alt="RewardForcing, driving scene, 1–4 seconds" loading="lazy">
+                  <img src="static/images/compare/driving/rewardforcing_2.jpg" width="319" height="184" alt="RewardForcing, driving scene, 5–8 seconds" loading="lazy">
+                  <img src="static/images/compare/driving/rewardforcing_3.jpg" width="322" height="186" alt="RewardForcing, driving scene, 9–12 seconds" loading="lazy">
+                  <img src="static/images/compare/driving/rewardforcing_4.jpg" width="322" height="186" alt="RewardForcing, driving scene, 13–15 seconds" loading="lazy">
+                </div></div>
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <div class="race-panel" id="panel-trainboat" role="tabpanel" aria-labelledby="tab-trainboat" hidden>
+          <p class="race-prompt">“…a train and a boat…”</p>
+          <div class="race-rows">
+            <div class="race-row race-row--ours">
+              <div class="race-label">
+                <span class="race-name">TANGO <span class="who">ours</span></span>
+                <div class="race-chips"><span class="chip chip--good">Realistic ✓</span><span class="chip chip--good">Dynamic ✓</span></div>
+              </div>
+              <figure class="clip" data-times='["1–4s","5–8s","9–12s","13–15s"]' data-start="3">
+                <div class="frames"><div class="frames-track">
+                  <img src="static/images/compare/trainboat/tango_1.jpg" width="319" height="184" alt="TANGO, train and boat scene, 1–4 seconds" loading="lazy">
+                  <img src="static/images/compare/trainboat/tango_2.jpg" width="319" height="184" alt="TANGO, train and boat scene, 5–8 seconds" loading="lazy">
+                  <img src="static/images/compare/trainboat/tango_3.jpg" width="319" height="184" alt="TANGO, train and boat scene, 9–12 seconds" loading="lazy">
+                  <img src="static/images/compare/trainboat/tango_4.jpg" width="319" height="184" alt="TANGO, train and boat scene, 13–15 seconds" loading="lazy">
+                </div></div>
+              </figure>
+            </div>
+            <div class="race-row">
+              <div class="race-label">
+                <span class="race-name">LongLive</span>
+                <div class="race-chips"><span class="chip chip--bad">Realistic ✗</span><span class="chip chip--bad">Dynamic ✗</span></div>
+              </div>
+              <figure class="clip" data-times='["1–4s","5–8s","9–12s","13–15s"]' data-start="3">
+                <div class="frames"><div class="frames-track">
+                  <img src="static/images/compare/trainboat/longlive_1.jpg" width="319" height="184" alt="LongLive, train and boat scene, 1–4 seconds" loading="lazy">
+                  <img src="static/images/compare/trainboat/longlive_2.jpg" width="319" height="184" alt="LongLive, train and boat scene, 5–8 seconds" loading="lazy">
+                  <img src="static/images/compare/trainboat/longlive_3.jpg" width="319" height="184" alt="LongLive, train and boat scene, 9–12 seconds" loading="lazy">
+                  <img src="static/images/compare/trainboat/longlive_4.jpg" width="319" height="184" alt="LongLive, train and boat scene, 13–15 seconds" loading="lazy">
+                </div></div>
+              </figure>
+            </div>
+            <div class="race-row">
+              <div class="race-label">
+                <span class="race-name">RewardForcing</span>
+                <div class="race-chips"><span class="chip chip--bad">Realistic ✗</span><span class="chip chip--good">Dynamic ✓</span></div>
+              </div>
+              <figure class="clip" data-times='["1–4s","5–8s","9–12s","13–15s"]' data-start="3">
+                <div class="frames"><div class="frames-track">
+                  <img src="static/images/compare/trainboat/rewardforcing_1.jpg" width="319" height="184" alt="RewardForcing, train and boat scene, 1–4 seconds" loading="lazy">
+                  <img src="static/images/compare/trainboat/rewardforcing_2.jpg" width="319" height="184" alt="RewardForcing, train and boat scene, 5–8 seconds" loading="lazy">
+                  <img src="static/images/compare/trainboat/rewardforcing_3.jpg" width="319" height="184" alt="RewardForcing, train and boat scene, 9–12 seconds" loading="lazy">
+                  <img src="static/images/compare/trainboat/rewardforcing_4.jpg" width="319" height="184" alt="RewardForcing, train and boat scene, 13–15 seconds" loading="lazy">
+                </div></div>
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <div class="race-panel" id="panel-bird" role="tabpanel" aria-labelledby="tab-bird" hidden>
+          <p class="race-prompt">“…a bird flying over a snowy forest…”</p>
+          <div class="race-rows">
+            <div class="race-row race-row--ours">
+              <div class="race-label">
+                <span class="race-name">TANGO <span class="who">ours</span></span>
+                <div class="race-chips"><span class="chip chip--good">Realistic ✓</span><span class="chip chip--good">Dynamic ✓</span></div>
+              </div>
+              <figure class="clip" data-times='["1–4s","5–8s","9–12s","13–15s"]' data-start="3">
+                <div class="frames"><div class="frames-track">
+                  <img src="static/images/compare/bird/tango_1.jpg" width="319" height="184" alt="TANGO, bird over snowy forest, 1–4 seconds" loading="lazy">
+                  <img src="static/images/compare/bird/tango_2.jpg" width="319" height="184" alt="TANGO, bird over snowy forest, 5–8 seconds" loading="lazy">
+                  <img src="static/images/compare/bird/tango_3.jpg" width="319" height="184" alt="TANGO, bird over snowy forest, 9–12 seconds" loading="lazy">
+                  <img src="static/images/compare/bird/tango_4.jpg" width="319" height="184" alt="TANGO, bird over snowy forest, 13–15 seconds" loading="lazy">
+                </div></div>
+              </figure>
+            </div>
+            <div class="race-row">
+              <div class="race-label">
+                <span class="race-name">LongLive</span>
+                <div class="race-chips"><span class="chip chip--good">Realistic ✓</span><span class="chip chip--bad">Dynamic ✗</span></div>
+              </div>
+              <figure class="clip" data-times='["1–4s","5–8s","9–12s","13–15s"]' data-start="3">
+                <div class="frames"><div class="frames-track">
+                  <img src="static/images/compare/bird/longlive_1.jpg" width="319" height="184" alt="LongLive, bird over snowy forest, 1–4 seconds" loading="lazy">
+                  <img src="static/images/compare/bird/longlive_2.jpg" width="319" height="184" alt="LongLive, bird over snowy forest, 5–8 seconds" loading="lazy">
+                  <img src="static/images/compare/bird/longlive_3.jpg" width="319" height="184" alt="LongLive, bird over snowy forest, 9–12 seconds" loading="lazy">
+                  <img src="static/images/compare/bird/longlive_4.jpg" width="322" height="186" alt="LongLive, bird over snowy forest, 13–15 seconds" loading="lazy">
+                </div></div>
+              </figure>
+            </div>
+            <div class="race-row">
+              <div class="race-label">
+                <span class="race-name">RewardForcing</span>
+                <div class="race-chips"><span class="chip chip--good">Realistic ✓</span><span class="chip chip--bad">Dynamic ✗</span></div>
+              </div>
+              <figure class="clip" data-times='["1–4s","5–8s","9–12s","13–15s"]' data-start="3">
+                <div class="frames"><div class="frames-track">
+                  <img src="static/images/compare/bird/rewardforcing_1.jpg" width="319" height="184" alt="RewardForcing, bird over snowy forest, 1–4 seconds" loading="lazy">
+                  <img src="static/images/compare/bird/rewardforcing_2.jpg" width="319" height="184" alt="RewardForcing, bird over snowy forest, 5–8 seconds" loading="lazy">
+                  <img src="static/images/compare/bird/rewardforcing_3.jpg" width="319" height="184" alt="RewardForcing, bird over snowy forest, 9–12 seconds" loading="lazy">
+                  <img src="static/images/compare/bird/rewardforcing_4.jpg" width="319" height="184" alt="RewardForcing, bird over snowy forest, 13–15 seconds" loading="lazy">
+                </div></div>
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <div class="race-shared">
+          <input class="race-range" type="range" min="0" max="3" step="1" value="3" aria-label="Video time segment">
+          <div class="seg-axis" aria-hidden="true"><span>1–4s</span><span>5–8s</span><span>9–12s</span><span>13–15s</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= RESULTS: BENCHMARKS ================= -->
+  <section id="benchmarks">
+    <div class="shell">
+      <p class="kicker">Results</p>
+      <h2>Against the state of the art</h2>
+      <div class="prose reveal">
+        <p>
+          On VBench all methods initialized
+          from the same Wan2.1-T2V-1.3B backbone and generating 15-second videos — TANGO scores best
+          on 9 of the 16 metrics and on all three aggregate scores. The full table included:
+        </p>
+      </div>
+
+      <div class="table-scroll reveal">
+        <table>
+          <thead>
+            <tr>
+              <th>Approach</th>
+              <th>Aesthetic quality</th><th>Appear. style</th><th>Backgr. consist.</th><th>Color</th>
+              <th>Dynamic degree</th><th>Human action</th><th>Imaging quality</th><th>Motion smooth.</th>
+              <th>Multiple objects</th><th>Object class</th><th>Overall consist.</th><th>Scene</th>
+              <th>Spatial relation.</th><th>Subject consist.</th><th>Temporal flicker</th><th>Temporal style</th>
+              <th>Quality</th><th>Semantic</th><th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>RollingForcing</td>
+              <td>0.658</td><td>0.205</td><td>0.957</td><td>0.819</td><td>0.403</td><td>0.940</td><td class="second">0.712</td><td class="second">0.986</td><td class="second">0.932</td><td>0.935</td>
+              <td>0.269</td><td>0.563</td><td>0.747</td><td class="best">0.958</td><td class="second">0.991</td><td>0.241</td>
+              <td>0.802</td><td class="second">0.814</td><td>0.804</td>
+            </tr>
+            <tr>
+              <td>Self-Forcing</td>
+              <td>0.644</td><td>0.206</td><td>0.942</td><td>0.848</td><td>0.611</td><td>0.950</td><td>0.696</td><td>0.985</td><td>0.896</td><td>0.959</td>
+              <td>0.271</td><td>0.578</td><td>0.768</td><td>0.928</td><td>0.989</td><td>0.249</td>
+              <td>0.832</td><td>0.808</td><td>0.827</td>
+            </tr>
+            <tr>
+              <td>CausVid</td>
+              <td class="second">0.665</td><td class="second">0.242</td><td class="best">0.966</td><td>0.824</td><td class="best">0.872</td><td class="best">0.998</td><td>0.702</td><td>0.976</td><td>0.747</td><td>0.937</td>
+              <td class="second">0.275</td><td>0.556</td><td>0.667</td><td>0.933</td><td>0.938</td><td class="second">0.252</td>
+              <td>0.837</td><td>0.794</td><td>0.828</td>
+            </tr>
+            <tr>
+              <td>RewardForcing</td>
+              <td>0.650</td><td>0.205</td><td>0.954</td><td class="best">0.896</td><td>0.625</td><td class="second">0.980</td><td>0.687</td><td>0.984</td><td>0.845</td><td>0.940</td>
+              <td>0.269</td><td>0.539</td><td class="second">0.830</td><td>0.932</td><td>0.986</td><td>0.244</td>
+              <td>0.835</td><td>0.804</td><td>0.829</td>
+            </tr>
+            <tr>
+              <td>LongLive</td>
+              <td>0.660</td><td>0.205</td><td>0.958</td><td class="second">0.885</td><td>0.361</td><td>0.960</td><td>0.695</td><td class="best">0.988</td><td>0.851</td><td class="second">0.969</td>
+              <td>0.268</td><td class="second">0.591</td><td>0.801</td><td class="second">0.953</td><td class="best">0.992</td><td>0.242</td>
+              <td class="second">0.838</td><td>0.812</td><td class="second">0.832</td>
+            </tr>
+            <tr class="ours">
+              <td>TANGO (ours)</td>
+              <td class="best">0.690</td><td class="best">0.257</td><td class="second">0.962</td><td>0.850</td><td class="second">0.769</td><td>0.960</td><td class="best">0.727</td><td>0.985</td><td class="best">0.937</td><td class="best">0.972</td>
+              <td class="best">0.283</td><td class="best">0.603</td><td class="best">0.859</td><td>0.945</td><td>0.989</td><td class="best">0.275</td>
+              <td class="best">0.864</td><td class="best">0.860</td><td class="best">0.863</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note reveal">
+        Bold = best, underlined = second best, per column.
+        TANGO does not win everywhere: subject consistency goes to RollingForcing, color to
+        RewardForcing, and CausVid stays ahead on dynamic degree — at the cost of semantic coherence.
+        Methods that anchor to early frames (LongLive, RollingForcing) score high on consistency but
+        low on dynamic degree (0.361 / 0.403): staying realistic by barely moving. Yet, TANGO achieves
+        greater consistency across all the measured aspects, and thus, a better overall score.
+      </p>
+
+      <div class="viz-card reveal">
+        <p class="viz-title">VBench total by video length</p>
+        <p class="viz-sub">All 16 metrics, recomputed on 5, 10, and 15-second generations. Hover any point for its value.</p>
+        <div class="viz-wrap">
+          <svg viewBox="0 0 720 370" xmlns="http://www.w3.org/2000/svg" role="img"
+               aria-label="Dot plot: TANGO holds a VBench total of 0.868, 0.862, 0.863 at 5, 10 and 15 seconds, while all prior methods stay between 0.804 and 0.836 at every length.">
+            <line class="gridline" x1="84" y1="288.9" x2="636" y2="288.9"/>
+            <line class="gridline" x1="84" y1="226.7" x2="636" y2="226.7"/>
+            <line class="gridline" x1="84" y1="164.4" x2="636" y2="164.4"/>
+            <line class="gridline" x1="84" y1="102.2" x2="636" y2="102.2"/>
+            <line class="gridline" x1="84" y1="40" x2="636" y2="40"/>
+            <text class="axis-text" x="76" y="292.9" text-anchor="end">0.80</text>
+            <text class="axis-text" x="76" y="230.7" text-anchor="end">0.82</text>
+            <text class="axis-text" x="76" y="168.4" text-anchor="end">0.84</text>
+            <text class="axis-text" x="76" y="106.2" text-anchor="end">0.86</text>
+            <text class="axis-text" x="76" y="44" text-anchor="end">0.88</text>
+            <text class="axis-text" x="170" y="330" text-anchor="middle">5s videos</text>
+            <text class="axis-text" x="360" y="330" text-anchor="middle">10s videos</text>
+            <text class="axis-text" x="550" y="330" text-anchor="middle">15s videos</text>
+            <text class="axis-label" x="84" y="18">VBench total (higher is better)</text>
+
+            <circle class="dot-ctx" cx="150" cy="267.1" r="5.5" data-tip='{"title":"RollingForcing — 5s","rows":[["VBench total","0.807"]]}'/>
+            <circle class="dot-ctx" cx="340" cy="276.4" r="5.5" data-tip='{"title":"RollingForcing — 10s","rows":[["VBench total","0.804"]]}'/>
+            <circle class="dot-ctx" cx="530" cy="276.4" r="5.5" data-tip='{"title":"RollingForcing — 15s","rows":[["VBench total","0.804"]]}'/>
+            <circle class="dot-ctx" cx="158" cy="180" r="5.5" data-tip='{"title":"Self-Forcing — 5s","rows":[["VBench total","0.835"]]}'/>
+            <circle class="dot-ctx" cx="348" cy="223.6" r="5.5" data-tip='{"title":"Self-Forcing — 10s","rows":[["VBench total","0.821"]]}'/>
+            <circle class="dot-ctx" cx="538" cy="204.9" r="5.5" data-tip='{"title":"Self-Forcing — 15s","rows":[["VBench total","0.827"]]}'/>
+            <circle class="dot-ctx" cx="166" cy="176.9" r="5.5" data-tip='{"title":"CausVid — 5s","rows":[["VBench total","0.836"]]}'/>
+            <circle class="dot-ctx" cx="356" cy="204.9" r="5.5" data-tip='{"title":"CausVid — 10s","rows":[["VBench total","0.827"]]}'/>
+            <circle class="dot-ctx" cx="546" cy="201.8" r="5.5" data-tip='{"title":"CausVid — 15s","rows":[["VBench total","0.828"]]}'/>
+            <circle class="dot-ctx" cx="174" cy="239.1" r="5.5" data-tip='{"title":"RewardForcing — 5s","rows":[["VBench total","0.816"]]}'/>
+            <circle class="dot-ctx" cx="364" cy="248.4" r="5.5" data-tip='{"title":"RewardForcing — 10s","rows":[["VBench total","0.813"]]}'/>
+            <circle class="dot-ctx" cx="554" cy="198.7" r="5.5" data-tip='{"title":"RewardForcing — 15s","rows":[["VBench total","0.829"]]}'/>
+            <circle class="dot-ctx" cx="182" cy="229.8" r="5.5" data-tip='{"title":"LongLive — 5s","rows":[["VBench total","0.819"]]}'/>
+            <circle class="dot-ctx" cx="372" cy="242.2" r="5.5" data-tip='{"title":"LongLive — 10s","rows":[["VBench total","0.815"]]}'/>
+            <circle class="dot-ctx" cx="562" cy="189.3" r="5.5" data-tip='{"title":"LongLive — 15s","rows":[["VBench total","0.832"]]}'/>
+
+            <circle class="dot-tango" cx="190" cy="77.3" r="6.5" data-tip='{"title":"TANGO — 5s","rows":[["VBench total","0.868"]]}'/>
+            <circle class="dot-tango" cx="380" cy="96" r="6.5" data-tip='{"title":"TANGO — 10s","rows":[["VBench total","0.862"]]}'/>
+            <circle class="dot-tango" cx="570" cy="92.9" r="6.5" data-tip='{"title":"TANGO — 15s","rows":[["VBench total","0.863"]]}'/>
+            <text class="end-label" x="190" y="60" text-anchor="middle">0.868</text>
+            <text class="end-label" x="380" y="79" text-anchor="middle">0.862</text>
+            <text class="end-label" x="570" y="76" text-anchor="middle">0.863</text>
+          </svg>
+        </div>
+        <div class="viz-legend">
+          <span class="key"><span class="dotkey" style="background: var(--accent-mark)"></span> TANGO</span>
+          <span class="key"><span class="dotkey" style="background: var(--muted)"></span><span>prior methods (RollingForcing, Self-Forcing, CausVid, RewardForcing, LongLive)</span></span>
+        </div>
+      </div>
+      <p class="caption reveal">
+        Terminal points are not only a long-video problem. They can make even short trajectories out-of-distribution for the generative model. Thus, TANGO helps at every length.
+      </p>
+
+      <details class="reveal">
+        <summary>Per-length semantic, quality and total scores — full table</summary>
+        <div class="details-body">
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr><th>Approach</th><th>Sem. 5s</th><th>Sem. 10s</th><th>Sem. 15s</th><th>Qual. 5s</th><th>Qual. 10s</th><th>Qual. 15s</th><th>Total 5s</th><th>Total 10s</th><th>Total 15s</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>RollingForcing</td><td>0.835</td><td>0.831</td><td class="second">0.814</td><td>0.800</td><td>0.798</td><td>0.802</td><td>0.807</td><td>0.804</td><td>0.804</td></tr>
+                <tr><td>Self-Forcing</td><td>0.839</td><td class="second">0.837</td><td>0.808</td><td>0.834</td><td>0.817</td><td>0.832</td><td>0.835</td><td>0.821</td><td>0.827</td></tr>
+                <tr><td>CausVid</td><td>0.813</td><td>0.809</td><td>0.794</td><td class="second">0.842</td><td class="second">0.831</td><td>0.837</td><td class="second">0.836</td><td class="second">0.827</td><td>0.828</td></tr>
+                <tr><td>RewardForcing</td><td class="second">0.847</td><td>0.836</td><td>0.804</td><td>0.808</td><td>0.807</td><td>0.835</td><td>0.816</td><td>0.813</td><td>0.829</td></tr>
+                <tr><td>LongLive</td><td>0.829</td><td>0.825</td><td>0.812</td><td>0.816</td><td>0.813</td><td class="second">0.838</td><td>0.819</td><td>0.815</td><td class="second">0.832</td></tr>
+                <tr class="ours"><td>TANGO (ours)</td><td class="best">0.867</td><td class="best">0.856</td><td class="best">0.860</td><td class="best">0.868</td><td class="best">0.864</td><td class="best">0.864</td><td class="best">0.868</td><td class="best">0.862</td><td class="best">0.863</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ================= EFFICIENCY ================= -->
+  <section id="efficiency">
+    <div class="shell">
+      <p class="kicker">Efficiency</p>
+      <h2>Test-time adaptation vs training-time scaling</h2>
+      <div class="prose reveal">
+        <p>
+          Test-time adaptation buys quality with inference compute instead of parameters and training data. Steering
+          a 1.3B model away from terminal points outperforms or matches in performance much larger models at a fraction of their runtime on the measured aspects.
+        </p>
+      </div>
+
+      <div class="viz-card reveal">
+        <p class="viz-title">Quality vs. runtime — circle area ∝ parameters</p>
+        <p class="viz-sub">15 seconds of video on comparable hardware; hover any circle for details.</p>
+        <div class="viz-wrap">
+          <svg viewBox="0 0 720 400" xmlns="http://www.w3.org/2000/svg" role="img"
+               aria-label="Scatter plot of VBench total against runtime on a log scale. TANGO at 1.3 billion parameters reaches 0.863 in 8.6 minutes. Larger models take 30 to 92 minutes; only the 27-billion-parameter SVI-2.0-Pro scores higher, at 0.869 in 43.2 minutes.">
+            <line class="gridline" x1="72" y1="336" x2="632" y2="336"/>
+            <line class="gridline" x1="72" y1="283.6" x2="632" y2="283.6"/>
+            <line class="gridline" x1="72" y1="231.3" x2="632" y2="231.3"/>
+            <line class="gridline" x1="72" y1="178.9" x2="632" y2="178.9"/>
+            <line class="gridline" x1="72" y1="126.5" x2="632" y2="126.5"/>
+            <line class="gridline" x1="72" y1="74.2" x2="632" y2="74.2"/>
+            <text class="axis-text" x="64" y="340" text-anchor="end">0.82</text>
+            <text class="axis-text" x="64" y="287.6" text-anchor="end">0.83</text>
+            <text class="axis-text" x="64" y="235.3" text-anchor="end">0.84</text>
+            <text class="axis-text" x="64" y="182.9" text-anchor="end">0.85</text>
+            <text class="axis-text" x="64" y="130.5" text-anchor="end">0.86</text>
+            <text class="axis-text" x="64" y="78.2" text-anchor="end">0.87</text>
+            <text class="axis-text" x="72" y="360" text-anchor="middle">1</text>
+            <text class="axis-text" x="205.6" y="360" text-anchor="middle">3</text>
+            <text class="axis-text" x="352" y="360" text-anchor="middle">10</text>
+            <text class="axis-text" x="485.6" y="360" text-anchor="middle">30</text>
+            <text class="axis-text" x="632" y="360" text-anchor="middle">100</text>
+            <text class="axis-label" x="352" y="388" text-anchor="middle">runtime for a 15-second video (minutes, log scale — left is faster)</text>
+            <text class="axis-label" x="72" y="18">VBench total (higher is better)</text>
+
+            <circle class="bubble-ctx" cx="94.2" cy="299.3" r="4.9" data-tip='{"title":"Self-Forcing (baseline)","rows":[["Parameters","1.3B"],["VBench total","0.827"],["Runtime","1.2 min"],["Memory","23.4 GiB"]]}'/>
+            <circle class="bubble-ctx" cx="622.3" cy="273.2" r="15.5" data-tip='{"title":"HunyuanVideo","rows":[["Parameters","13B"],["VBench total","0.832"],["Runtime","92.3 min"],["Memory","62.5 GiB"]]}'/>
+            <circle class="bubble-ctx" cx="488" cy="247" r="16.1" data-tip='{"title":"SVI-1.0 (Wan2.1)","rows":[["Parameters","14B"],["VBench total","0.837"],["Runtime","30.6 min"],["Memory","37.9 GiB"]]}'/>
+            <circle class="bubble-ctx" cx="520" cy="184.1" r="16.1" data-tip='{"title":"SVI-2.0 (Wan2.1)","rows":[["Parameters","14B"],["VBench total","0.849"],["Runtime","39.8 min"],["Memory","37.9 GiB"]]}'/>
+            <circle class="bubble-ctx" cx="529.9" cy="79.4" r="22.3" data-tip='{"title":"SVI-2.0-Pro (Wan2.2)","rows":[["Parameters","27B"],["VBench total","0.869"],["Runtime","43.2 min"],["Memory","68.4 GiB"]]}'/>
+            <circle class="bubble-tango" cx="333.7" cy="110.8" r="4.9" data-tip='{"title":"TANGO (ours)","rows":[["Parameters","1.3B"],["VBench total","0.863"],["Runtime","8.6 min"],["Memory","37.6 GiB"]]}'/>
+
+            <text class="end-sub" x="108" y="303">Self-Forcing · 1.3B</text>
+            <text class="end-sub" x="600" y="303" text-anchor="end">HunyuanVideo · 13B</text>
+            <text class="end-sub" x="466" y="251" text-anchor="end">SVI-1.0 · 14B</text>
+            <text class="end-sub" x="498" y="188" text-anchor="end">SVI-2.0 · 14B</text>
+            <text class="end-sub" x="503" y="83" text-anchor="end">SVI-2.0-Pro · 27B</text>
+            <text class="end-label" x="348" y="114">TANGO · 1.3B</text>
+          </svg>
+        </div>
+        <div class="viz-legend">
+          <span class="key"><span class="dotkey" style="background: var(--accent-mark)"></span> TANGO (1.3B + test-time guidance)</span>
+          <span class="key"><span class="dotkey" style="background: var(--muted)"></span> scaling-based alternatives</span>
+        </div>
+      </div>
+
+      <details class="reveal">
+        <summary>Runtime &amp; memory — full table</summary>
+        <div class="details-body">
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th>Model</th><th>Params</th><th>VBench ↑</th><th>Runtime ↓</th><th>Memory ↓</th></tr></thead>
+              <tbody>
+                <tr><td>Baseline (Self-Forcing)</td><td>1.3B</td><td>0.827</td><td>1.2 min</td><td>23.4 GiB</td></tr>
+                <tr><td>HunyuanVideo</td><td>13B</td><td>0.832</td><td>92.3 min</td><td>62.5 GiB</td></tr>
+                <tr><td>SVI-1.0 (Wan2.1)</td><td>14B</td><td>0.837</td><td>30.6 min</td><td>37.9 GiB</td></tr>
+                <tr><td>SVI-2.0 (Wan2.1)</td><td>14B</td><td>0.849</td><td>39.8 min</td><td>37.9 GiB</td></tr>
+                <tr><td>SVI-2.0-Pro (Wan2.2)</td><td>27B</td><td>0.869</td><td>43.2 min</td><td>68.4 GiB</td></tr>
+                <tr class="ours"><td>TANGO (ours)</td><td>1.3B</td><td>0.863</td><td>8.6 min</td><td>37.6 GiB</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ================= GALLERY ================= -->
+  <section id="gallery">
+    <div class="shell">
+      <p class="kicker">Gallery</p>
+      <h2>One mechanism, three tasks</h2>
+      <div class="prose reveal">
+        <p>
+          TANGO's correction does not rely on the initial condition — its objective reads only the
+          noise the model predicts one step ahead. The identical procedure therefore runs unchanged
+          for text-to-video, image-to-video, and video-to-video generation. Seven frames per sample, uniformly spanning 14 seconds — hover
+          or drag to move through time.
+        </p>
+      </div>
+
+      <div class="mode-tabs reveal">
+        <div class="tabs" role="tablist" aria-label="Generation mode">
+          <button class="tab" role="tab" id="tab-t2v" aria-controls="panel-t2v" aria-selected="true" type="button">Text → Video</button>
+          <button class="tab" role="tab" id="tab-i2v" aria-controls="panel-i2v" aria-selected="false" type="button">Image → Video</button>
+          <button class="tab" role="tab" id="tab-v2v" aria-controls="panel-v2v" aria-selected="false" type="button">Video → Video</button>
+        </div>
+
+        <!-- T2V -->
+        <div class="gallery-grid" id="panel-t2v" role="tabpanel" aria-labelledby="tab-t2v">
+          <div class="card">
+            <figure class="clip" data-times='["1–2s","3–4s","5–6s","7–8s","9–10s","11–12s","13–14s"]'>
+              <div class="frames"><div class="frames-track">
+                <img src="static/images/gallery/t2v_1/f1.jpg" width="447" height="258" alt="Ukiyo-style boat on the Seine, frame at 1–2 seconds" loading="lazy">
+                <img src="static/images/gallery/t2v_1/f2.jpg" width="447" height="258" alt="Frame at 3–4 seconds" loading="lazy">
+                <img src="static/images/gallery/t2v_1/f3.jpg" width="447" height="258" alt="Frame at 5–6 seconds" loading="lazy">
+                <img src="static/images/gallery/t2v_1/f4.jpg" width="447" height="258" alt="Frame at 7–8 seconds" loading="lazy">
+                <img src="static/images/gallery/t2v_1/f5.jpg" width="447" height="258" alt="Frame at 9–10 seconds" loading="lazy">
+                <img src="static/images/gallery/t2v_1/f6.jpg" width="447" height="258" alt="Frame at 11–12 seconds" loading="lazy">
+                <img src="static/images/gallery/t2v_1/f7.jpg" width="447" height="258" alt="Frame at 13–14 seconds" loading="lazy">
+              </div></div>
+              <div class="clip-ui" hidden>
+                <input type="range" min="0" max="6" step="1" value="0" aria-label="Video time">
+                <span class="timecode">1–2s</span>
+              </div>
+            </figure>
+            <p class="card-prompt">A boat sailing leisurely along the Seine River with the Eiffel Tower in background by Hokusai, in the style of Ukiyo</p>
+            <p class="card-note">Follows the prompt over the full span while the background stays accurate.</p>
+          </div>
+          <div class="card">
+            <figure class="clip" data-times='["1–2s","3–4s","5–6s","7–8s","9–10s","11–12s","13–14s"]'>
+              <div class="frames"><div class="frames-track">
+                <img src="static/images/gallery/t2v_4/f1.jpg" width="447" height="258" alt="Space shuttle launch, frame at 1–2 seconds" loading="lazy">
+                <img src="static/images/gallery/t2v_4/f2.jpg" width="447" height="258" alt="Frame at 3–4 seconds" loading="lazy">
+                <img src="static/images/gallery/t2v_4/f3.jpg" width="447" height="258" alt="Frame at 5–6 seconds" loading="lazy">
+                <img src="static/images/gallery/t2v_4/f4.jpg" width="447" height="258" alt="Frame at 7–8 seconds" loading="lazy">
+                <img src="static/images/gallery/t2v_4/f5.jpg" width="447" height="258" alt="Frame at 9–10 seconds" loading="lazy">
+                <img src="static/images/gallery/t2v_4/f6.jpg" width="447" height="258" alt="Frame at 11–12 seconds" loading="lazy">
+                <img src="static/images/gallery/t2v_4/f7.jpg" width="447" height="258" alt="Frame at 13–14 seconds" loading="lazy">
+              </div></div>
+              <div class="clip-ui" hidden>
+                <input type="range" min="0" max="6" step="1" value="0" aria-label="Video time">
+                <span class="timecode">1–2s</span>
+              </div>
+            </figure>
+            <p class="card-prompt">A space shuttle launching into orbit, with flames and smoke billowing out from the engines</p>
+            <p class="card-note">The subject follows the prompt without turning unrealistic or static.</p>
+          </div>
+          <div class="card">
+            <figure class="clip" data-times='["1–2s","3–4s","5–6s","7–8s","9–10s","11–12s","13–14s"]'>
+              <div class="frames"><div class="frames-track">
+                <img src="static/images/gallery/t2v_3/f1.jpg" width="447" height="258" alt="Van Gogh painting in a room, frame at 1–2 seconds" loading="lazy">
+                <img src="static/images/gallery/t2v_3/f2.jpg" width="447" height="258" alt="Frame at 3–4 seconds" loading="lazy">
+                <img src="static/images/gallery/t2v_3/f3.jpg" width="447" height="258" alt="Frame at 5–6 seconds" loading="lazy">
+                <img src="static/images/gallery/t2v_3/f4.jpg" width="447" height="258" alt="Frame at 7–8 seconds" loading="lazy">
+                <img src="static/images/gallery/t2v_3/f5.jpg" width="447" height="258" alt="Frame at 9–10 seconds" loading="lazy">
+                <img src="static/images/gallery/t2v_3/f6.jpg" width="447" height="258" alt="Frame at 11–12 seconds" loading="lazy">
+                <img src="static/images/gallery/t2v_3/f7.jpg" width="447" height="258" alt="Frame at 13–14 seconds" loading="lazy">
+              </div></div>
+              <div class="clip-ui" hidden>
+                <input type="range" min="0" max="6" step="1" value="0" aria-label="Video time">
+                <span class="timecode">1–2s</span>
+              </div>
+            </figure>
+            <p class="card-prompt">Vincent van Gogh is painting in the room</p>
+            <p class="card-note">The subject moves into the scene and performs the action; partial occlusions do not disrupt it.</p>
+          </div>
+          <div class="card">
+            <figure class="clip" data-times='["1–2s","3–4s","5–6s","7–8s","9–10s","11–12s","13–14s"]'>
+              <div class="frames"><div class="frames-track">
+                <img src="static/images/gallery/t2v_2/f1.jpg" width="447" height="258" alt="Old sewing machine working, frame at 1–2 seconds" loading="lazy">
+                <img src="static/images/gallery/t2v_2/f2.jpg" width="447" height="258" alt="Frame at 3–4 seconds" loading="lazy">
+                <img src="static/images/gallery/t2v_2/f3.jpg" width="447" height="258" alt="Frame at 5–6 seconds" loading="lazy">
+                <img src="static/images/gallery/t2v_2/f4.jpg" width="447" height="258" alt="Frame at 7–8 seconds" loading="lazy">
+                <img src="static/images/gallery/t2v_2/f5.jpg" width="447" height="258" alt="Frame at 9–10 seconds" loading="lazy">
+                <img src="static/images/gallery/t2v_2/f6.jpg" width="447" height="258" alt="Frame at 11–12 seconds" loading="lazy">
+                <img src="static/images/gallery/t2v_2/f7.jpg" width="447" height="258" alt="Frame at 13–14 seconds" loading="lazy">
+              </div></div>
+              <div class="clip-ui" hidden>
+                <input type="range" min="0" max="6" step="1" value="0" aria-label="Video time">
+                <span class="timecode">1–2s</span>
+              </div>
+            </figure>
+            <p class="card-prompt">Sewing machine, old sewing machine working.</p>
+            <p class="card-note">The moving parts are correctly identified; the rest of the scene remains intact.</p>
+          </div>
+        </div>
+
+        <!-- I2V -->
+        <div class="gallery-grid" id="panel-i2v" role="tabpanel" aria-labelledby="tab-i2v" hidden>
+          <div class="card">
+            <figure class="clip" data-times='["1–2s","3–4s","5–6s","7–8s","9–10s","11–12s","13–14s"]'>
+              <div class="frames">
+                <span class="input-thumb"><img src="static/images/gallery/i2v_1/input.jpg" width="447" height="258" alt="Input image: ballet dancers in a grand ballroom" loading="lazy"><span class="tag">input image</span></span>
+                <div class="frames-track">
+                <img src="static/images/gallery/i2v_1/f1.jpg" width="447" height="258" alt="Ballroom dancers, frame at 1–2 seconds" loading="lazy">
+                <img src="static/images/gallery/i2v_1/f2.jpg" width="447" height="258" alt="Frame at 3–4 seconds" loading="lazy">
+                <img src="static/images/gallery/i2v_1/f3.jpg" width="447" height="258" alt="Frame at 5–6 seconds" loading="lazy">
+                <img src="static/images/gallery/i2v_1/f4.jpg" width="447" height="258" alt="Frame at 7–8 seconds" loading="lazy">
+                <img src="static/images/gallery/i2v_1/f5.jpg" width="447" height="258" alt="Frame at 9–10 seconds" loading="lazy">
+                <img src="static/images/gallery/i2v_1/f6.jpg" width="447" height="258" alt="Frame at 11–12 seconds" loading="lazy">
+                <img src="static/images/gallery/i2v_1/f7.jpg" width="447" height="258" alt="Frame at 13–14 seconds" loading="lazy">
+              </div></div>
+              <div class="clip-ui" hidden>
+                <input type="range" min="0" max="6" step="1" value="0" aria-label="Video time">
+                <span class="timecode">1–2s</span>
+              </div>
+            </figure>
+            <p class="card-prompt">In the opulent setting of a grand ballroom adorned with golden drapes and classical decor, a group of ballet dancers in intricate costumes perform with poised elegance, their movements synchronized to the subtle, yet powerful, strains of classical music.</p>
+            <p class="card-note">The environment is maintained while the dancers keep moving realistically.</p>
+          </div>
+          <div class="card">
+            <figure class="clip" data-times='["1–2s","3–4s","5–6s","7–8s","9–10s","11–12s","13–14s"]'>
+              <div class="frames">
+                <span class="input-thumb"><img src="static/images/gallery/i2v_2/input.jpg" width="447" height="258" alt="Input image: man on a penny-farthing bicycle in front of a suburban house" loading="lazy"><span class="tag">input image</span></span>
+                <div class="frames-track">
+                <img src="static/images/gallery/i2v_2/f1.jpg" width="447" height="258" alt="Penny-farthing rider, frame at 1–2 seconds" loading="lazy">
+                <img src="static/images/gallery/i2v_2/f2.jpg" width="447" height="258" alt="Frame at 3–4 seconds" loading="lazy">
+                <img src="static/images/gallery/i2v_2/f3.jpg" width="447" height="258" alt="Frame at 5–6 seconds" loading="lazy">
+                <img src="static/images/gallery/i2v_2/f4.jpg" width="447" height="258" alt="Frame at 7–8 seconds" loading="lazy">
+                <img src="static/images/gallery/i2v_2/f5.jpg" width="447" height="258" alt="Frame at 9–10 seconds" loading="lazy">
+                <img src="static/images/gallery/i2v_2/f6.jpg" width="447" height="258" alt="Frame at 11–12 seconds" loading="lazy">
+                <img src="static/images/gallery/i2v_2/f7.jpg" width="447" height="258" alt="Frame at 13–14 seconds" loading="lazy">
+              </div></div>
+              <div class="clip-ui" hidden>
+                <input type="range" min="0" max="6" step="1" value="0" aria-label="Video time">
+                <span class="timecode">1–2s</span>
+              </div>
+            </figure>
+            <p class="card-prompt">In the tranquil suburban setting, the frame captures a man animatedly riding an oversized vintage bicycle, known as a penny-farthing, in front of a two-story house with red and white trim.</p>
+            <p class="card-note">The scene extends naturally; the subject stays consistent while moving.</p>
+          </div>
+          <div class="card">
+            <figure class="clip" data-times='["1–2s","3–4s","5–6s","7–8s","9–10s","11–12s","13–14s"]'>
+              <div class="frames">
+                <span class="input-thumb"><img src="static/images/gallery/i2v_3/input.jpg" width="447" height="258" alt="Input image: marathon leader on a sunlit London street" loading="lazy"><span class="tag">input image</span></span>
+                <div class="frames-track">
+                <img src="static/images/gallery/i2v_3/f1.jpg" width="447" height="258" alt="Marathon runner, frame at 1–2 seconds" loading="lazy">
+                <img src="static/images/gallery/i2v_3/f2.jpg" width="447" height="258" alt="Frame at 3–4 seconds" loading="lazy">
+                <img src="static/images/gallery/i2v_3/f3.jpg" width="447" height="258" alt="Frame at 5–6 seconds" loading="lazy">
+                <img src="static/images/gallery/i2v_3/f4.jpg" width="447" height="258" alt="Frame at 7–8 seconds" loading="lazy">
+                <img src="static/images/gallery/i2v_3/f5.jpg" width="447" height="258" alt="Frame at 9–10 seconds" loading="lazy">
+                <img src="static/images/gallery/i2v_3/f6.jpg" width="447" height="258" alt="Frame at 11–12 seconds" loading="lazy">
+                <img src="static/images/gallery/i2v_3/f7.jpg" width="447" height="258" alt="Frame at 13–14 seconds" loading="lazy">
+              </div></div>
+              <div class="clip-ui" hidden>
+                <input type="range" min="0" max="6" step="1" value="0" aria-label="Video time">
+                <span class="timecode">1–2s</span>
+              </div>
+            </figure>
+            <p class="card-prompt">In the bustling heart of a sunlit marathon in London, the frame captures the intense focus and sheer determination of a male marathon runner as he leads the race.</p>
+            <p class="card-note">Environment aesthetics stay realistic even after the initial view leaves the camera.</p>
+          </div>
+          <div class="card">
+            <figure class="clip" data-times='["1–2s","3–4s","5–6s","7–8s","9–10s","11–12s","13–14s"]'>
+              <div class="frames">
+                <span class="input-thumb"><img src="static/images/gallery/i2v_4/input.jpg" width="447" height="258" alt="Input image: graduates in gowns and caps in a well-lit hall" loading="lazy"><span class="tag">input image</span></span>
+                <div class="frames-track">
+                <img src="static/images/gallery/i2v_4/f1.jpg" width="447" height="258" alt="Graduation hall, frame at 1–2 seconds" loading="lazy">
+                <img src="static/images/gallery/i2v_4/f2.jpg" width="447" height="258" alt="Frame at 3–4 seconds" loading="lazy">
+                <img src="static/images/gallery/i2v_4/f3.jpg" width="447" height="258" alt="Frame at 5–6 seconds" loading="lazy">
+                <img src="static/images/gallery/i2v_4/f4.jpg" width="447" height="258" alt="Frame at 7–8 seconds" loading="lazy">
+                <img src="static/images/gallery/i2v_4/f5.jpg" width="447" height="258" alt="Frame at 9–10 seconds" loading="lazy">
+                <img src="static/images/gallery/i2v_4/f6.jpg" width="447" height="258" alt="Frame at 11–12 seconds" loading="lazy">
+                <img src="static/images/gallery/i2v_4/f7.jpg" width="447" height="258" alt="Frame at 13–14 seconds" loading="lazy">
+              </div></div>
+              <div class="clip-ui" hidden>
+                <input type="range" min="0" max="6" step="1" value="0" aria-label="Video time">
+                <span class="timecode">1–2s</span>
+              </div>
+            </figure>
+            <p class="card-prompt">The scene takes place in a well-lit hall, possibly within an educational institution, suggested by the presence of individuals dressed in graduation gowns and caps.</p>
+            <p class="card-note">People move naturally and the environment stays coherent.</p>
+          </div>
+        </div>
+
+        <!-- V2V -->
+        <div class="gallery-grid" id="panel-v2v" role="tabpanel" aria-labelledby="tab-v2v" hidden>
+          <div class="card">
+            <figure class="clip" data-times='["1–2s","3–4s","5–6s","7–8s","9–10s","11–12s","13–14s"]'>
+              <div class="frames">
+                <span class="input-thumb"><img src="static/images/gallery/v2v_1/input.jpg" width="447" height="258" alt="Input video frame: person under a covered railway platform" loading="lazy"><span class="tag">input video</span></span>
+                <div class="frames-track">
+                <img src="static/images/gallery/v2v_1/f1.jpg" width="447" height="258" alt="Railway platform continuation, frame at 1–2 seconds" loading="lazy">
+                <img src="static/images/gallery/v2v_1/f2.jpg" width="447" height="258" alt="Frame at 3–4 seconds" loading="lazy">
+                <img src="static/images/gallery/v2v_1/f3.jpg" width="447" height="258" alt="Frame at 5–6 seconds" loading="lazy">
+                <img src="static/images/gallery/v2v_1/f4.jpg" width="447" height="258" alt="Frame at 7–8 seconds" loading="lazy">
+                <img src="static/images/gallery/v2v_1/f5.jpg" width="447" height="258" alt="Frame at 9–10 seconds" loading="lazy">
+                <img src="static/images/gallery/v2v_1/f6.jpg" width="447" height="258" alt="Frame at 11–12 seconds" loading="lazy">
+                <img src="static/images/gallery/v2v_1/f7.jpg" width="447" height="258" alt="Frame at 13–14 seconds" loading="lazy">
+              </div></div>
+              <div class="clip-ui" hidden>
+                <input type="range" min="0" max="6" step="1" value="0" aria-label="Video time">
+                <span class="timecode">1–2s</span>
+              </div>
+            </figure>
+            <p class="card-prompt">The video showcases a railway track environment on a bright day with partial cloud cover. Prominent features include multiple railway tracks running parallel, bordered by a platform on the right.</p>
+            <p class="card-note">The initial view is extended naturally, preserving the scene's aesthetics.</p>
+          </div>
+          <div class="card">
+            <figure class="clip" data-times='["1–2s","3–4s","5–6s","7–8s","9–10s","11–12s","13–14s"]'>
+              <div class="frames">
+                <span class="input-thumb"><img src="static/images/gallery/v2v_2/input.jpg" width="447" height="258" alt="Input video frame: dancers on a lit stage" loading="lazy"><span class="tag">input video</span></span>
+                <div class="frames-track">
+                <img src="static/images/gallery/v2v_2/f1.jpg" width="447" height="258" alt="Stage dancers continuation, frame at 1–2 seconds" loading="lazy">
+                <img src="static/images/gallery/v2v_2/f2.jpg" width="447" height="258" alt="Frame at 3–4 seconds" loading="lazy">
+                <img src="static/images/gallery/v2v_2/f3.jpg" width="447" height="258" alt="Frame at 5–6 seconds" loading="lazy">
+                <img src="static/images/gallery/v2v_2/f4.jpg" width="447" height="258" alt="Frame at 7–8 seconds" loading="lazy">
+                <img src="static/images/gallery/v2v_2/f5.jpg" width="447" height="258" alt="Frame at 9–10 seconds" loading="lazy">
+                <img src="static/images/gallery/v2v_2/f6.jpg" width="447" height="258" alt="Frame at 11–12 seconds" loading="lazy">
+                <img src="static/images/gallery/v2v_2/f7.jpg" width="447" height="258" alt="Frame at 13–14 seconds" loading="lazy">
+              </div></div>
+              <div class="clip-ui" hidden>
+                <input type="range" min="0" max="6" step="1" value="0" aria-label="Video time">
+                <span class="timecode">1–2s</span>
+              </div>
+            </figure>
+            <p class="card-prompt">In the luminous glow of the stage, a troupe of dancers moves in harmonious synchrony against a backdrop that radiates an almost celestial aura.</p>
+            <p class="card-note">The dancers keep moving naturally, staying synchronized.</p>
+          </div>
+          <div class="card">
+            <figure class="clip" data-times='["1–2s","3–4s","5–6s","7–8s","9–10s","11–12s","13–14s"]'>
+              <div class="frames">
+                <span class="input-thumb"><img src="static/images/gallery/v2v_3/input.jpg" width="447" height="258" alt="Input video frame: trains on parallel railway tracks" loading="lazy"><span class="tag">input video</span></span>
+                <div class="frames-track">
+                <img src="static/images/gallery/v2v_3/f1.jpg" width="447" height="258" alt="Railway tracks continuation, frame at 1–2 seconds" loading="lazy">
+                <img src="static/images/gallery/v2v_3/f2.jpg" width="447" height="258" alt="Frame at 3–4 seconds" loading="lazy">
+                <img src="static/images/gallery/v2v_3/f3.jpg" width="447" height="258" alt="Frame at 5–6 seconds" loading="lazy">
+                <img src="static/images/gallery/v2v_3/f4.jpg" width="447" height="258" alt="Frame at 7–8 seconds" loading="lazy">
+                <img src="static/images/gallery/v2v_3/f5.jpg" width="447" height="258" alt="Frame at 9–10 seconds" loading="lazy">
+                <img src="static/images/gallery/v2v_3/f6.jpg" width="447" height="258" alt="Frame at 11–12 seconds" loading="lazy">
+                <img src="static/images/gallery/v2v_3/f7.jpg" width="447" height="258" alt="Frame at 13–14 seconds" loading="lazy">
+              </div></div>
+              <div class="clip-ui" hidden>
+                <input type="range" min="0" max="6" step="1" value="0" aria-label="Video time">
+                <span class="timecode">1–2s</span>
+              </div>
+            </figure>
+            <p class="card-prompt">The video showcases a railway track environment on a bright day with partial cloud cover. Prominent features include multiple railway tracks running parallel, bordered by a platform on the right.</p>
+            <p class="card-note">Independent motion of the subject and the camera is handled correctly.</p>
+          </div>
+          <div class="card">
+            <figure class="clip" data-times='["1–2s","3–4s","5–6s","7–8s","9–10s","11–12s","13–14s"]'>
+              <div class="frames">
+                <span class="input-thumb"><img src="static/images/gallery/v2v_4/input.jpg" width="447" height="258" alt="Input video frame: two military boats at speed" loading="lazy"><span class="tag">input video</span></span>
+                <div class="frames-track">
+                <img src="static/images/gallery/v2v_4/f1.jpg" width="447" height="258" alt="Military boats continuation, frame at 1–2 seconds" loading="lazy">
+                <img src="static/images/gallery/v2v_4/f2.jpg" width="447" height="258" alt="Frame at 3–4 seconds" loading="lazy">
+                <img src="static/images/gallery/v2v_4/f3.jpg" width="447" height="258" alt="Frame at 5–6 seconds" loading="lazy">
+                <img src="static/images/gallery/v2v_4/f4.jpg" width="447" height="258" alt="Frame at 7–8 seconds" loading="lazy">
+                <img src="static/images/gallery/v2v_4/f5.jpg" width="447" height="258" alt="Frame at 9–10 seconds" loading="lazy">
+                <img src="static/images/gallery/v2v_4/f6.jpg" width="447" height="258" alt="Frame at 11–12 seconds" loading="lazy">
+                <img src="static/images/gallery/v2v_4/f7.jpg" width="447" height="258" alt="Frame at 13–14 seconds" loading="lazy">
+              </div></div>
+              <div class="clip-ui" hidden>
+                <input type="range" min="0" max="6" step="1" value="0" aria-label="Video time">
+                <span class="timecode">1–2s</span>
+              </div>
+            </figure>
+            <p class="card-prompt">In this dynamic video frame, two sleek military boats cut through the ocean with impressive speed and precision, their hulls throwing up sheets of white spray as they maneuver.</p>
+            <p class="card-note">New views of the boats remain consistent under subject and camera motion.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAILURES ================= -->
+  <section id="failures">
+    <div class="shell">
+      <p class="kicker kicker--warn">Limitations</p>
+      <h2>Where TANGO fails</h2>
+      <div class="prose reveal">
+        <p>
+          Test-time adaptation can only find a better trajectory if one exists in the learned
+          manifold of real videos. For topics far outside the training distribution, none may — and the failure
+          mode could be subtle: the videos below look pleasant, while judged by a field-expert they are technically wrong from the first
+          frame.
+        </p>
+      </div>
+
+      <div class="failure-grid">
+        <div class="card reveal">
+          <figure class="clip" data-times='["1–4s","5–8s","9–12s","13–15s"]'>
+            <div class="frames"><div class="frames-track">
+              <img src="static/images/failures/crystal_1.jpg" width="319" height="184" alt="Time-crystal render, 1–4 seconds" loading="lazy">
+              <img src="static/images/failures/crystal_2.jpg" width="319" height="184" alt="Time-crystal render, 5–8 seconds" loading="lazy">
+              <img src="static/images/failures/crystal_3.jpg" width="319" height="184" alt="Time-crystal render, 9–12 seconds" loading="lazy">
+              <img src="static/images/failures/crystal_4.jpg" width="319" height="184" alt="Time-crystal render, 13–15 seconds" loading="lazy">
+            </div></div>
+            <div class="clip-ui" hidden>
+              <input type="range" min="0" max="3" step="1" value="0" aria-label="Video time">
+              <span class="timecode">1–4s</span>
+            </div>
+          </figure>
+          <div class="failure-chips">
+            <span class="chip chip--good">Visually pleasant ✓</span>
+            <span class="chip chip--bad">Technically accurate ✗</span>
+          </div>
+          <p class="card-prompt">A macro visualization of a shimmering Time Crystal atomic lattice suspended in mid-air between two ultrasonic transducers by acoustic levitation. The crystal's internal geometric structure rhythmically pulsates and changes symmetry in a continuous temporal loop.</p>
+          <p class="card-note">Exotic physics: the rendering is coherent and aesthetic, and bears no relation to the actual phenomenon.</p>
+        </div>
+        <div class="card reveal">
+          <figure class="clip" data-times='["1–4s","5–8s","9–12s","13–15s"]'>
+            <div class="frames"><div class="frames-track">
+              <img src="static/images/failures/nanobot_1.jpg" width="319" height="184" alt="Nanobot render, 1–4 seconds" loading="lazy">
+              <img src="static/images/failures/nanobot_2.jpg" width="319" height="184" alt="Nanobot render, 5–8 seconds" loading="lazy">
+              <img src="static/images/failures/nanobot_3.jpg" width="319" height="184" alt="Nanobot render, 9–12 seconds" loading="lazy">
+              <img src="static/images/failures/nanobot_4.jpg" width="319" height="184" alt="Nanobot render, 13–15 seconds" loading="lazy">
+            </div></div>
+            <div class="clip-ui" hidden>
+              <input type="range" min="0" max="3" step="1" value="0" aria-label="Video time">
+              <span class="timecode">1–4s</span>
+            </div>
+          </figure>
+          <div class="failure-chips">
+            <span class="chip chip--good">Visually pleasant ✓</span>
+            <span class="chip chip--bad">Technically accurate ✗</span>
+          </div>
+          <p class="card-prompt">A cryo-electron tomography simulation of a geometric DNA-origami nanobot suspended in a viscoelastic, non-Newtonian fluid. The nanobot uses mechanical arms to refold an amorphous, misfolded protein blob into a beta-sheet helix. As its arms move rapidly, the surrounding fluid undergoes localized shear-thickening accurately depicting low-Reynolds-number fluid dynamics.</p>
+          <p class="card-note">Nanobiology: visually plausible throughout, and completely inaccurate as science.</p>
+        </div>
+      </div>
+
+      <div class="prose reveal" style="margin-top: 1.75rem">
+        <p>
+          Test-time adaptation is therefore complementary to scaling data and model capacity, not a
+          substitute: scaling grows the space of valid trajectories; noise guidance helps finding a good
+          one inside it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CITATION ================= -->
+  <section id="citation">
+    <div class="shell">
+      <p class="kicker">Paper</p>
+      <h2>Paper &amp; citation</h2>
+      <div class="prose reveal">
+        <p>
+          <strong>Test-Time Noise Guided Adaptation for Realistic Autoregressive Video Generation</strong><br>
+          Dimitrios Karageorgiou, Symeon Papadopoulos, Ioannis Kompatsiaris, Efstratios Gavves<br>
+          European Conference on Computer Vision (ECCV) 2026 ·
+          <a href="https://arxiv.org/abs/2607.15849" target="_blank" rel="noopener">arXiv:2607.15849</a>
+        </p>
+      </div>
+
+      <div class="cite-box reveal">
+        <button class="copy-btn" type="button">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <span aria-live="polite">Copy</span><span class="sr-only"> BibTeX to clipboard</span>
+        </button>
+        <pre id="bibtex-code"><code>@inproceedings{karageorgiou2026tango,
   title     = {Test-Time Noise Guided Adaptation for Realistic Autoregressive Video Generation},
   author    = {Karageorgiou, Dimitrios and Papadopoulos, Symeon and Kompatsiaris, Ioannis and Gavves, Efstratios},
   booktitle = {European Conference on Computer Vision (ECCV)},
   year      = {2026}
 }</code></pre>
+      </div>
+
+      <p class="ack reveal">
+        This work was supported by the Horizon Europe projects ELIAS (grant no. 101120237) and
+        ELLIOT (grant no. 101214398). The computational resources were granted with the support of
+        GRNET.
+      </p>
     </div>
   </section>
-  <!-- End BibTeX citation -->
 
-  </main>
+</main>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="columns is-centered">
-        <div class="column is-8">
-          <div class="content">
-            <p>
-              This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
-              You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
-            </p>
-          </div>
-        </div>
-      </div>
+<footer>
+  <div class="shell">
+    <div class="foot-links">
+      <a href="https://mever.gr" target="_blank" rel="noopener">MeVer Team</a>
+      <a href="https://www.iti.gr" target="_blank" rel="noopener">Information Technologies Institute, CERTH</a>
+      <a href="https://www.uva.nl" target="_blank" rel="noopener">University of Amsterdam</a>
+      <a href="https://arxiv.org/abs/2607.15849" target="_blank" rel="noopener">arXiv:2607.15849</a>
     </div>
-  </footer>
+    <p>
+      © 2026 the authors. Website content is licensed under
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>.
+    </p>
+  </div>
+</footer>
 
 </body>
 </html>

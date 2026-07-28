@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>QA harness</title>
+<iframe id="f" src="/index.html" style="width:1400px;height:900px"></iframe>
+<iframe id="fl" src="/index.html?theme=light" style="width:400px;height:300px"></iframe>
+<pre id="out">PENDING</pre>
+<script>
+var results = [];
+function log(name, ok, detail) { results.push((ok ? 'PASS' : 'FAIL') + ' | ' + name + (detail ? ' | ' + detail : '')); }
+
+function runChecks() {
+  try {
+    var doc = document.getElementById('f').contentDocument;
+    var win = document.getElementById('f').contentWindow;
+
+    // 1. clip upgrade
+    var clips = doc.querySelectorAll('.clip');
+    var ready = doc.querySelectorAll('.clip.is-ready');
+    log('clip count', clips.length === 25, clips.length + ' clips');
+    log('clips upgraded to is-ready', ready.length === clips.length, ready.length + '/' + clips.length);
+
+    // 2. clip-ui unhidden
+    var uis = doc.querySelectorAll('.clip-ui');
+    var hiddenUis = doc.querySelectorAll('.clip-ui[hidden]');
+    log('clip-ui unhidden', hiddenUis.length === 0, uis.length + ' uis, ' + hiddenUis.length + ' still hidden');
+
+    // 3. each ready clip shows exactly one frame
+    var badClips = 0;
+    ready.forEach(function (c) {
+      var on = c.querySelectorAll('.frames-track img.on');
+      if (on.length !== 1) badClips++;
+    });
+    log('exactly one visible frame per clip', badClips === 0, badClips + ' bad');
+
+    // 4. gallery tabs toggle computed display
+    var tabI2v = doc.getElementById('tab-i2v');
+    tabI2v.click();
+    var dI2v = win.getComputedStyle(doc.getElementById('panel-i2v')).display;
+    var dT2v = win.getComputedStyle(doc.getElementById('panel-t2v')).display;
+    log('gallery tab i2v shows grid', dI2v === 'grid', 'i2v=' + dI2v);
+    log('gallery tab t2v hides', dT2v === 'none', 't2v=' + dT2v);
+    doc.getElementById('tab-t2v').click();
+    var dT2vBack = win.getComputedStyle(doc.getElementById('panel-t2v')).display;
+    log('gallery tab back to t2v', dT2vBack === 'grid', 't2v=' + dT2vBack);
+
+    // 5. comparison tabs
+    doc.getElementById('tab-bird').click();
+    var dBird = win.getComputedStyle(doc.getElementById('panel-bird')).display;
+    var dDriving = win.getComputedStyle(doc.getElementById('panel-driving')).display;
+    log('comparison tab bird shows', dBird !== 'none', 'bird=' + dBird);
+    log('comparison tab driving hides', dDriving === 'none', 'driving=' + dDriving);
+    log('aria-selected sync', doc.getElementById('tab-bird').getAttribute('aria-selected') === 'true' &&
+        doc.getElementById('tab-driving').getAttribute('aria-selected') === 'false');
+
+    // 6. shared race slider drives all clips in the comparison section
+    var compSection = doc.getElementById('comparison').querySelector('[data-race]');
+    var compRange = compSection.querySelector('.race-range');
+    compRange.value = 1;
+    compRange.dispatchEvent(new win.Event('input', { bubbles: true }));
+    var okFrames = 0, total = 0;
+    compSection.querySelectorAll('.clip').forEach(function (c) {
+      total++;
+      var imgs = c.querySelectorAll('.frames-track img');
+      if (imgs[1].classList.contains('on') && !imgs[3].classList.contains('on')) okFrames++;
+    });
+    log('comparison race slider syncs 9 clips to frame 1', okFrames === total && total === 9, okFrames + '/' + total);
+    var axisOn = compSection.querySelectorAll('.seg-axis span.on');
+    var axisOk = true;
+    axisOn.forEach(function (s) { if (s.textContent.indexOf('5–8') === -1) axisOk = false; });
+    log('seg-axis highlight follows slider', axisOn.length >= 1 && axisOk, axisOn.length + ' highlighted');
+
+    // 7. hero teaser race slider
+    var teaser = doc.querySelector('.teaser[data-race]');
+    var tRange = teaser.querySelector('.race-range');
+    tRange.value = 0;
+    tRange.dispatchEvent(new win.Event('input', { bubbles: true }));
+    var tOk = 0;
+    teaser.querySelectorAll('.clip').forEach(function (c) {
+      var imgs = c.querySelectorAll('.frames-track img');
+      if (imgs[0].classList.contains('on')) tOk++;
+    });
+    log('teaser race slider syncs 2 clips to frame 0', tOk === 2, tOk + '/2');
+
+    // 8. per-clip range + timecode in gallery
+    var gClip = doc.querySelector('#panel-t2v .clip');
+    var gRange = gClip.querySelector('input[type="range"]');
+    gRange.value = 4;
+    gRange.dispatchEvent(new win.Event('input', { bubbles: true }));
+    var gImgs = gClip.querySelectorAll('.frames-track img');
+    var tc = gClip.querySelector('.timecode');
+    log('gallery per-clip slider sets frame 4', gImgs[4].classList.contains('on') && !gImgs[0].classList.contains('on'));
+    log('timecode updates', tc.textContent === '9–10 s', 'tc=' + tc.textContent);
+
+    // 9. pointermove scrub on frames
+    var frames = gClip.querySelector('.frames');
+    var r = frames.getBoundingClientRect();
+    var ev = new win.PointerEvent('pointermove', { clientX: r.left + r.width * 0.1, clientY: r.top + 5, pointerType: 'mouse', bubbles: true });
+    frames.dispatchEvent(ev);
+    log('pointermove scrub selects frame 0', gImgs[0].classList.contains('on'), '');
+
+    // 10. tooltip
+    var hit = doc.querySelector('[data-tip]');
+    hit.dispatchEvent(new win.PointerEvent('pointerenter', { clientX: 200, clientY: 200, pointerType: 'mouse' }));
+    var tip = doc.querySelector('.viz-tip');
+    log('viz tooltip appears', tip && win.getComputedStyle(tip).display === 'block', tip ? 'display=' + tip.style.display : 'no tip el');
+    log('viz tooltip has content', tip && tip.textContent.length > 5, tip ? tip.textContent.slice(0, 40) : '');
+
+    // 11. theme toggle
+    var tt = doc.querySelector('.theme-toggle');
+    var beforeBg = win.getComputedStyle(doc.body).backgroundColor;
+    tt.click();
+    var isLight = doc.documentElement.getAttribute('data-theme') === 'light';
+    var afterBg = win.getComputedStyle(doc.body).backgroundColor;
+    log('theme toggle sets light', isLight, '');
+    log('theme toggle changes background', beforeBg !== afterBg, beforeBg + ' -> ' + afterBg);
+    log('toggle aria-label flips', tt.getAttribute('aria-label') === 'Switch to dark theme', tt.getAttribute('aria-label'));
+    tt.click();
+    log('theme toggle back to dark', !doc.documentElement.hasAttribute('data-theme'), '');
+
+    // 12. light boot via query param (separate iframe)
+    var docL = document.getElementById('fl').contentDocument;
+    log('?theme=light boots light', docL.documentElement.getAttribute('data-theme') === 'light',
+        'attr=' + docL.documentElement.getAttribute('data-theme'));
+
+    // 13. duplicate ids in live DOM
+    var ids = {}, dups = [];
+    doc.querySelectorAll('[id]').forEach(function (el) {
+      if (ids[el.id]) dups.push(el.id); ids[el.id] = 1;
+    });
+    log('no duplicate ids', dups.length === 0, dups.join(','));
+
+    // 14. no-JS fallback sanity: html.js class present
+    log('boot script added html.js', doc.documentElement.classList.contains('js'));
+
+  } catch (e) {
+    results.push('ERROR | ' + e.message + ' | ' + (e.stack || '').split('\n')[1]);
+  }
+  document.getElementById('out').textContent = 'QA-RESULTS\n' + results.join('\n') + '\nQA-END';
+}
+
+window.addEventListener('load', function () { setTimeout(runChecks, 600); });
+</script>
