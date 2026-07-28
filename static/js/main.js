@@ -6,6 +6,10 @@
 
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  function speakTime(t) {
+    return t.replace('–', ' to ').replace(/s$/, ' seconds');
+  }
+
   /* ---------- Theme toggle ---------- */
   var toggleBtn = document.querySelector('.theme-toggle');
   if (toggleBtn) {
@@ -51,7 +55,7 @@
         }
         if (range) {
           range.value = i;
-          if (times[i]) range.setAttribute('aria-valuetext', times[i]);
+          if (times[i]) range.setAttribute('aria-valuetext', speakTime(times[i]));
         }
         if (tc && times[i]) tc.textContent = times[i];
       }
@@ -102,7 +106,7 @@
       group.forEach(function (c) { c.set(i); });
       if (range) {
         range.value = i;
-        if (times[i]) range.setAttribute('aria-valuetext', times[i]);
+        if (times[i]) range.setAttribute('aria-valuetext', speakTime(times[i]));
       }
       Array.prototype.forEach.call(axes, function (axis) {
         var spans = axis.querySelectorAll('span');
@@ -134,6 +138,7 @@
     function userStop() { userStopped = true; stop(); }
     if (range) {
       range.addEventListener('input', function () { userStop(); paint(+range.value); });
+      range.addEventListener('focus', userStop);
     }
     group.forEach(function (c) {
       c.onUser = function (i) { userStop(); paint(i); };
@@ -224,11 +229,6 @@
     el.addEventListener('pointerenter', function (e) { showTip(e, el); });
     el.addEventListener('pointermove', moveTip);
     el.addEventListener('pointerleave', function () { tip.style.display = 'none'; });
-    el.addEventListener('focus', function () {
-      var r = el.getBoundingClientRect();
-      showTip({ clientX: r.left + r.width / 2, clientY: r.top }, el);
-    });
-    el.addEventListener('blur', function () { tip.style.display = 'none'; });
   });
 
   /* ---------- BibTeX copy ---------- */
@@ -275,6 +275,15 @@
   mirrorInBar('.hero-links', 'show-actions');
   mirrorInBar('.hero-mark', 'show-mark');
 
+  var navLinksRow = document.querySelector('.topnav-links');
+  if (navLinksRow) {
+    var checkNavScroll = function () {
+      navLinksRow.classList.toggle('can-scroll', navLinksRow.scrollWidth > navLinksRow.clientWidth + 2);
+    };
+    checkNavScroll();
+    window.addEventListener('resize', checkNavScroll);
+  }
+
   /* ---------- Scrollspy ---------- */
   var navLinks = Array.prototype.slice.call(document.querySelectorAll('.topnav-links a[href^="#"]'));
   if (navLinks.length && 'IntersectionObserver' in window) {
@@ -284,9 +293,9 @@
     var spy = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
-          if (current) current.classList.remove('active');
+          if (current) { current.classList.remove('active'); current.removeAttribute('aria-current'); }
           current = map[entry.target.id];
-          if (current) current.classList.add('active');
+          if (current) { current.classList.add('active'); current.setAttribute('aria-current', 'true'); }
         }
       });
     }, { rootMargin: '-20% 0px -70% 0px' });

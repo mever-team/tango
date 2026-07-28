@@ -22,7 +22,7 @@ index.html            # the whole page: content, inline SVG charts + manifold di
 static/css/style.css  # design tokens (dark/light), layout, components
 static/js/main.js     # theme toggle, filmstrip scrubbers, synced sliders, tabs,
                       # chart tooltips, BibTeX copy, scrollspy, reveals
-static/fonts/         # self-hosted variable Inter + Source Serif 4 (600), latin subsets
+static/fonts/         # self-hosted variable Inter, Source Serif 4 (600), CM Caligraphic (math glyphs)
 static/images/
   gallery/<sample>/   # per-sample video frames f1..f7.jpg (+ input.jpg for I2V/V2V)
   compare/<scene>/    # 3-method × 4-segment comparison frames (from paper Fig. 3)
