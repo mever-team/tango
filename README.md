@@ -32,21 +32,23 @@ static/images/
   social_preview.png  # 1200×630 Open Graph card
 ```
 
-All video frames are extracted losslessly from the paper's figure PDFs (`paper/svg-inkscape/`),
-named by their position on the page timeline: `f1` = 1–2 s … `f7` = 13–14 s (gallery),
-`*_1` = 1–4 s … `*_4` = 13–15 s (comparisons/failures).
+## Citation
 
-### Swapping in real videos later
+If you find this work useful, please consider citing:
 
-Every filmstrip is a fixed-aspect `.clip` component (`index.html` uses one markup pattern
-everywhere). To upgrade a sample to a real video, replace its `.frames-track` images with a
-`<video>` of the same aspect ratio and drive `currentTime` from the existing range input —
-no layout changes needed.
+```bibtex
+@inproceedings{karageorgiou2026tango,
+  title     = {Test-Time Noise Guided Adaptation for Realistic Autoregressive Video Generation},
+  author    = {Karageorgiou, Dimitrios and Papadopoulos, Symeon and Kompatsiaris, Ioannis and Gavves, Efstratios},
+  booktitle = {European Conference on Computer Vision (ECCV)},
+  year      = {2026}
+}
+```
 
-## Deploying to GitHub Pages
+## Acknowledgments
 
-Push to `mever-team/tango`, then **Settings → Pages → Deploy from a branch**, branch `main`,
-folder `/ (root)`. `.nojekyll` is included so `static/` is served without Jekyll processing.
+This work was supported by the Horizon Europe projects [ELIAS](https://elias-ai.eu/) (grant no. 101120237) and [ELLIOT](https://elliot-ai.eu/) (grant no. 101214398).
+The computational resources were granted with the support of [GRNET](https://grnet.gr/en/).
 
 ## License
 
