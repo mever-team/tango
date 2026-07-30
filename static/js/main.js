@@ -261,19 +261,47 @@
     });
   }
 
-  /* ---------- Hero elements -> top bar when scrolled past ---------- */
+  /* ---------- Hero elements -> top bar when scrolled past ----------
+     The bar state is recomputed from live geometry on every scroll frame, not from
+     IntersectionObserver records: Chrome may deliver several queued records in one
+     callback, and the oldest one carries a stale rect. Acting on it flipped the bar
+     to the wrong state, and because the old code only ran on threshold crossings the
+     mistake stuck until the hero was crossed again. The observer is kept purely as an
+     extra trigger for changes that fire no scroll event (fragment jumps, late layout
+     shifts); its records are never read. */
   var topnav = document.querySelector('.topnav');
+  var mirrored = [];
   function mirrorInBar(selector, cls) {
     var el = document.querySelector(selector);
-    if (!el || !topnav || !('IntersectionObserver' in window)) return;
-    var io = new IntersectionObserver(function (entries) {
-      var e = entries[0];
-      topnav.classList.toggle(cls, !e.isIntersecting && e.boundingClientRect.top < 0);
-    }, { rootMargin: '-56px 0px 0px 0px' });
-    io.observe(el);
+    if (el && topnav) mirrored.push({ el: el, cls: cls });
   }
   mirrorInBar('.hero-links', 'show-actions');
   mirrorInBar('.hero-mark', 'show-mark');
+
+  if (mirrored.length) {
+    var barSyncQueued = false;
+    var syncBar = function () {
+      barSyncQueued = false;
+      var edge = topnav.getBoundingClientRect().bottom;
+      mirrored.forEach(function (m) {
+        topnav.classList.toggle(m.cls, m.el.getBoundingClientRect().bottom <= edge);
+      });
+    };
+    var queueBarSync = function () {
+      if (barSyncQueued) return;
+      barSyncQueued = true;
+      if (window.requestAnimationFrame) window.requestAnimationFrame(syncBar);
+      else setTimeout(syncBar, 16);
+    };
+    window.addEventListener('scroll', queueBarSync, { passive: true });
+    window.addEventListener('resize', queueBarSync);
+    window.addEventListener('load', queueBarSync);
+    if ('IntersectionObserver' in window) {
+      var barIO = new IntersectionObserver(queueBarSync, { rootMargin: '-56px 0px 0px 0px' });
+      mirrored.forEach(function (m) { barIO.observe(m.el); });
+    }
+    syncBar();
+  }
 
   var navLinksRow = document.querySelector('.topnav-links');
   if (navLinksRow) {
