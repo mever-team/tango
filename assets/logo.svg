@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180">
+  <!-- TANGO mark: trajectory escaping a terminal point (bold favicon variant) -->
+  <rect width="180" height="180" rx="30" fill="#0b0e12"/>
+  <path d="M 24,102 C 22,64 58,38 96,36 C 134,34 158,52 160,80 C 162,108 140,132 104,138 C 66,144 26,140 24,102 Z"
+        fill="#1fa694" fill-opacity="0.16"/>
+  <path d="M 50,98 C 68,82 92,72 114,74" fill="none" stroke="#1fa694" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="50" cy="98" r="12" fill="#1fa694"/>
+  <circle cx="122" cy="75" r="10" fill="#1fa694"/>
+  <circle cx="122" cy="75" r="20" fill="none" stroke="#d0761f" stroke-width="7"/>
+  <path d="M 116,90 C 106,104 99,111 90,119" fill="none" stroke="#d55181" stroke-width="10" stroke-dasharray="15 13" stroke-linecap="round"/>
+  <circle cx="85" cy="124" r="12" fill="#1fa694"/>
+</svg>
