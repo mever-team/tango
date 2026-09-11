@@ -17,7 +17,22 @@ ECCV 2026
 
 </div>
 
-> The code has not been released yet. Watch this repository to be notified.
+## Inference
+
+#### Any-length Video-to-Video Generation
+
+```bash
+python inference.py \
+  --config_path configs/self_forcing_dmd_long.yaml \
+  --output_folder "${output_dir}" \
+  --checkpoint_path checkpoints/self_forcing_dmd.pt \
+  --data_path "${videos_csv_path}" \
+  --csv_root_dir "${videos_csv_root_dir}" \
+  --use_ema \
+  --num_output_frames ${num_output_latent_frames} \
+  --num_input_latent_frames ${num_input_latent_frames} \
+  --v2v
+```
 
 Autoregressive video diffusion models eventually collapse. Prior works aim to keep each frame on the
 manifold of real ones, but a trajectory whose every frame looks right can still reach a **terminal
