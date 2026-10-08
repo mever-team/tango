@@ -473,16 +473,6 @@ section > .shell > h2 {
 .btn:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
 .btn svg { width: 15px; height: 15px; flex: none; color: var(--accent); }
 .btn:hover svg { color: inherit; }
-.btn--soon svg { color: var(--muted); }
-.btn--soon { color: var(--muted); }
-.btn--soon .soon {
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 0 0.3rem;
-}
 
 .thesis {
   margin: 2.4rem auto 0;
